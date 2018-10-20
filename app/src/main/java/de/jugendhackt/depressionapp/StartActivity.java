@@ -50,9 +50,10 @@ public class StartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         editor.putString("birthday", bd.getText().toString());
         editor.putString("Name", Nm.getText().toString());
-        editor.putString("TimeOfBirth", tb.getText().toString());
+        editor.putString("timeOfBirth", tb.getText().toString());
         editor.putString("sex", sx.getSelectedItem().toString());
         editor.putString("Ort", rt.getSelectedItem().toString());
+        editor.commit();
         startActivity(intent);
     }
 }
