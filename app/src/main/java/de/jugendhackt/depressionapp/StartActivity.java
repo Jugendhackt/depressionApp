@@ -1,11 +1,15 @@
 package de.jugendhackt.depressionapp;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -24,5 +28,15 @@ public class StartActivity extends AppCompatActivity {
                 "Saarland","Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items1);
         dropdown1.setAdapter(adapter1);
+
+
+
+
+    }
+
+    public void onClickBtn(View v)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
