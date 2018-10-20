@@ -16,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String birthday = "12.10.2000";
-    private String timeOfBirth = "04.34";
+    private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
 
     private CountDownTimer countDownTimer;
-    private long timeLeftInMilliseconds = 100000;
+    private long timeLeftInMilliseconds = 10000;
 
     TextView secondsLifeTime;
 
@@ -64,23 +64,21 @@ public class MainActivity extends AppCompatActivity {
         TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
-        secondsLifeTime = findViewById(R.id.countdownValueTv);
-
-
-       // loop();
-
-    }
+        secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
 
 
 
-/*
-    private void loop() {
-        countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
+
+
+        countDownTimer = new CountDownTimer(timeLeftInMilliseconds*1000, 1000) {
+            TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeftInMilliseconds = millisUntilFinished;
 
-                secondsLifeTime.setText((int)millisUntilFinished);
+               // secondsLifeTime.setText((int)millisUntilFinished);
+               // secondsLifeTime.setText("H");
+                secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
 
 
             }
@@ -90,8 +88,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
+
+
+
+       // loop();
+
     }
-*/
+
+
+
+
+
 
 
 
@@ -117,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
     }
     */
+
 
     public void countdown(){
         int secondslived = dayslived()*86400;
