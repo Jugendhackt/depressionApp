@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/nextButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="50dp"
+        android:text="next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/wastedLifetimeCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wasted lifetime"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <CheckBox
+        android:id="@+id/deathCountdownCneckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="Countdown for your anticipated death"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <CheckBox
+        android:id="@+id/famousAchievementsCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What famous people achieved in your age"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <CheckBox
+        android:id="@+id/deathRateCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily death rate"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="340dp" />
+
+    <TextView
+        android:id="@+id/choosingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Please mark the features you want us to inform you:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="20dp" />
+
+</android.support.constraint.ConstraintLayout>
+
