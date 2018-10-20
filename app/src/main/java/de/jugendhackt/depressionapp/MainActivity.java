@@ -37,11 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public int yearsLived(){
-        return 4;
-    }
-
-
 
     public int dayslived(){
         birthday = "12.10.2000";
@@ -51,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Calendar cal = Calendar.getInstance();
-        return (int)(cal.get(Calendar.YEAR-year)*365+cal.get(Calendar.MONTH-month)*30.5+cal.get(Calendar.DAY_OF_MONTH-day));
+        System.out.println(cal.get(Calendar.YEAR));
+       return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
     }
 
     public void countdown(){
@@ -275,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public double percentagelived(){
-        return dayslived()/lifeexpectancy();
+        return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
 
 }
