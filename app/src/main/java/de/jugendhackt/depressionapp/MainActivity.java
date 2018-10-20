@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
 
-        birthday = pref.getString("birthday", null);
-        sex = pref.getString("sex", null);
-        Ort = pref.getString("Ort", null);
-        Name = pref.getString("Name", null);
-        timeOfBirth = pref.getString("timeOfBirth", null);
+        birthday = pref.getString("birthday", "12.10.2000");
+        sex = pref.getString("sex", "04:34");
+        Ort = pref.getString("Ort", "Female");
+        Name = pref.getString("Name", "Bayern");
+        timeOfBirth = pref.getString("timeOfBirth", "Test Subjektine");
+
+       // System.out.println(pref.getString("birthday", null));
+
+
 
 
 
@@ -51,13 +57,25 @@ public class MainActivity extends AppCompatActivity {
         TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
+        TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
 
+
+        loop();
 
     }
 
 
 
 
+    private void loop() {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Eine Sekunde vorbei!");
+
+            }
+        }, 0, 1000);//put here time 1000 milliseconds=1 second
+    }
 
 
 
