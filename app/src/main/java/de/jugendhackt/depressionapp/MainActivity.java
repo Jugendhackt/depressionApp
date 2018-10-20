@@ -27,4 +27,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items1);
         dropdown1.setAdapter(adapter1);
     }
+
+    public void countdown(int yyyy, int mm, int dd){
+        int secLive = yyyy*31557600+mm*2635200+dd*86400;
+
+    }
+
+
 }
