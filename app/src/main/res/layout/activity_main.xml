@@ -6,6 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -133,3 +134,41 @@
 
     </LinearLayout>
 </ScrollView>
+=======
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="26dp"
+                android:text="60%"
+                android:textSize="66sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="132dp"
+                android:layout_marginEnd="116dp"
+                android:text="Verschwendete Lebenszeit"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
+>>>>>>> a3b37cd50610f03642cec8b0ed496f73805ddfbb
