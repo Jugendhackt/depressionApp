@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String birthday = "12.10.2000";
+    private String birthhour = "09:55";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
@@ -284,5 +285,17 @@ public class MainActivity extends AppCompatActivity {
         double m = cal.get(Calendar.MINUTE);
         double s = cal.get(Calendar.SECOND);
         return (int)(((h + m/60 + s/3600) / 24) * 151600);
+    }
+    public int secsAlive() {
+        Calendar cal = Calendar.getInstance();
+        int day = Integer.parseInt(birthday.substring(0,2));
+        int month = Integer.parseInt(birthday.substring(3,5));
+        int year = Integer.parseInt(birthday.substring(6,10));
+        int hour = Integer.parseInt(birthhour.substring(0,2));
+        int minute = Integer.parseInt(birthhour.substring(3,5));
+        double s = cal.get(Calendar.SECOND);
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        return (int) ((int) ((dayslived() * 24 + (h - hour)) * 3600 + (m - minute) * 60) + s);
     }
 }
