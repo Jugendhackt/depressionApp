@@ -130,7 +130,7 @@
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="I do nothing!" />
+            android:text="I don´t do anything!" />
 
     </LinearLayout>
 </ScrollView>
