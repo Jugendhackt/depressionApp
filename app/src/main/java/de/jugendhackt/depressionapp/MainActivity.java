@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
 
-        birthday = pref.getString("birthday", null);
-        sex = pref.getString("sex", null);
+        birthday = pref.getString("birthday", "29.03.2000");
+        sex = pref.getString("sex", "Male");
         Ort = pref.getString("Ort", null);
-        Name = pref.getString("Name", null);
-        timeOfBirth = pref.getString("timeOfBirth", null);
+        Name = pref.getString("Name", "Marina Mustermann");
+        timeOfBirth = pref.getString("timeOfBirth", "12:00");
 
 
 
@@ -290,6 +290,12 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         expectancy = 81;
                         break;
+                }
+                break;
+                case "State":
+                switch (sex) {
+                    return expectancy = 81;
+                    break;
                 }
                 break;
         }
