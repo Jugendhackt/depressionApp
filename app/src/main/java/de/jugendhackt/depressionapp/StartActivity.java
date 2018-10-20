@@ -1,6 +1,7 @@
 package de.jugendhackt.depressionapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -36,7 +40,19 @@ public class StartActivity extends AppCompatActivity {
 
     public void onClickBtn(View v)
     {
+        TextView bd = findViewById(R.id.Date);
+        TextView Nm = findViewById(R.id.Name);
+        TextView tb = findViewById(R.id.Hours);
+        Spinner sx = findViewById(R.id.spinner);
+        Spinner rt = findViewById(R.id.spinner1);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
+        SharedPreferences.Editor editor = pref.edit();
         Intent intent = new Intent(this, MainActivity.class);
+        editor.putString("birthday", bd.getText().toString());
+        editor.putString("Name", Nm.getText().toString());
+        editor.putString("TimeOfBirth", tb.getText().toString());
+        editor.putString("sex", sx.getSelectedItem().toString());
+        editor.putString("Ort", rt.getSelectedItem().toString());
         startActivity(intent);
     }
 }
