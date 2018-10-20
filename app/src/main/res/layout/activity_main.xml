@@ -1,13 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/wastedLifetimeTvFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello Person, you wasted"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/wastedLifetimePercent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="60%"
+            android:textSize="60sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/wastedLifetimeTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="of your lifetime!"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/wastedLifetimeProgressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="60" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="5dip"
+            android:background="#000" />
+
+
+        <TextView
+            android:id="@+id/countdownTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Countdown (to one billion seconds lifetime):"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/countdownValueTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="540981289 seconds"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="5dip"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/whatArchievedTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What others achieved in you age:"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/whatArchievedTvText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dip"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/peopleDiedTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="People died today:"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/peopleDiedCounterTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2490 "
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="I do nothing!" />
+
+    </LinearLayout>
+</ScrollView>
+=======
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -44,3 +170,4 @@
     </ScrollView>
 
 </LinearLayout>
+>>>>>>> a3b37cd50610f03642cec8b0ed496f73805ddfbb
