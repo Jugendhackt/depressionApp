@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         birthday = pref.getString("birthday", "29.03.2000");
         sex = pref.getString("sex", "Male");
         Ort = pref.getString("Ort", null);
-        Name = pref.getString("Name", "Marina Mustermann");
+        Name = pref.getString("Name", "Marina");
         timeOfBirth = pref.getString("timeOfBirth", "12:00");
 
 
@@ -292,12 +292,19 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 break;
-                case "State":
-                switch (sex) {
-                    return expectancy = 81;
+                default:
+                    switch(sex){
+                        case "Male":
+                            expectancy = 78;
+                            break;
+                        case "Female":
+                            expectancy = 83;
+                            break;
+                        default:
+                            expectancy = 81;
+                            break;
+                    }
                     break;
-                }
-                break;
         }
         return expectancy;
     }
