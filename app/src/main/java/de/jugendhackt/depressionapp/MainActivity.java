@@ -16,31 +16,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView PeopleDead = findViewById(R.id.countdownValueTv);
-        PeopleDead.setText(peopleDied());
+        TextView PeopleDead = findViewById(R.id.peopleDiedCounterTv);
+        PeopleDead.setText(String.valueOf(peopleDied()));
 
         TextView wastedLifeTimeTextView = findViewById(R.id.wastedLifetimePercent);
         System.out.println("Halllo");
         System.out.println(dayslived());
 
 
-       // wastedLifeTimeTextView.setText(String.valueOf(percentagelived()));
+
+
+        wastedLifeTimeTextView.setText(String.valueOf(percentagelived()));
+
+
 
 
 
 
     }
 
-    private String birthday;
-    private String sex;
-    private String Ort;
-    private String Name;
+    private String birthday = "12.10.2000";
+    private String sex = "Female";
+    private String Ort = "Bayern";
+    private String Name = "Max";
+
+
 
 
 
 
     public int dayslived(){
-        birthday = "12.10.2000";
         int day = Integer.parseInt(birthday.substring(0,2));
         int month = Integer.parseInt(birthday.substring(3,5));
         int year = Integer.parseInt(birthday.substring(6,10));
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int lifeexpectancy() {
-        int expectancy = 0;
+        int expectancy = 80;
         switch (Ort) {
             case "Baden-Württemberg":
                 switch (sex) {
@@ -276,9 +281,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public int peopleDied() {
         Calendar cal = Calendar.getInstance();
-        int h = cal.get(Calendar.HOUR_OF_DAY);
-        int m = cal.get(Calendar.MINUTE);
-        int s = cal.get(Calendar.SECOND);
-        return ((h + m/60 + s/3600) / 24) * 151600;
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        double s = cal.get(Calendar.SECOND);
+        return (int)(((h + m/60 + s/3600) / 24) * 151600);
     }
 }
