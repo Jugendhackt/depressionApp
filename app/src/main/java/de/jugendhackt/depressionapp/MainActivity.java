@@ -1,6 +1,7 @@
 package de.jugendhackt.depressionapp;
 
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -8,15 +9,23 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String birthhour = "09:55";
+
     private String birthday = "12.10.2000";
-    private String timeOfBirth = "04.34";
+    private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMilliseconds = 10000;
+
+    TextView secondsLifeTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         Ort = pref.getString("Ort", null);
         Name = pref.getString("Name", "Marina");
         timeOfBirth = pref.getString("timeOfBirth", "12:00");
+
+       // System.out.println(pref.getString("birthday", null));
+
+
 
 
 
@@ -51,9 +64,44 @@ public class MainActivity extends AppCompatActivity {
         TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
+        secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
 
+
+
+
+
+        countDownTimer = new CountDownTimer(timeLeftInMilliseconds*1000, 1000) {
+            TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMilliseconds = millisUntilFinished;
+
+               // secondsLifeTime.setText((int)millisUntilFinished);
+               // secondsLifeTime.setText("H");
+                secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
+
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
+
+
+       // loop();
 
     }
+
+
+
+
+
+
+
+
 
     public int dayslived(){
         int day = Integer.parseInt(birthday.substring(0,2));
@@ -77,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-    public int countdown() {
-    return 1000000000 - secsAlive();
+
+    public void countdown(){
+        int secondslived = dayslived()*86400;
+        int timeremaining = 1000000000-secondslived;
     }
 
     public int lifeexpectancy() {
@@ -321,8 +371,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public int secsAlive() {
         Calendar cal = Calendar.getInstance();
-        int hour = Integer.parseInt(birthhour.substring(0,2));
-        int minute = Integer.parseInt(birthhour.substring(3,5));
+        int hour = Integer.parseInt(timeOfBirth.substring(0,2));
+        int minute = Integer.parseInt(timeOfBirth.substring(3,5));
         double s = cal.get(Calendar.SECOND);
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
