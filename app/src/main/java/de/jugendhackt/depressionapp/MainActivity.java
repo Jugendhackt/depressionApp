@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private String birthhour = "09:55";
     private String birthday = "12.10.2000";
     private String timeOfBirth = "04.34";
     private String sex = "Female";
@@ -54,15 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    private String birthday = "12.10.2000";
-    private String birthhour = "09:55";
-    private String sex = "Female";
-    private String Ort = "Bayern";
-    private String Name = "Max";
-
-
-
 
     public int dayslived(){
         int day = Integer.parseInt(birthday.substring(0,2));
