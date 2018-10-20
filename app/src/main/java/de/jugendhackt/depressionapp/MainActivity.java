@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.time.LocalDate;
 import java.util.Calendar;
 
@@ -16,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        TextView wastedLifeTimeTextView = findViewById(R.id.wastedLifetimePercent);
+        System.out.println("Halllo");
+        System.out.println(dayslived());
+
+
+       // wastedLifeTimeTextView.setText(String.valueOf(percentagelived()));
+
+
 
 
     }
@@ -25,12 +35,23 @@ public class MainActivity extends AppCompatActivity {
     private String Ort;
     private String Name;
 
-    private int dayslived(){
+
+
+    public int yearsLived(){
+        return 4;
+    }
+
+
+
+    public int dayslived(){
+        birthday = "12.10.2000";
         int day = Integer.parseInt(birthday.substring(0,2));
         int month = Integer.parseInt(birthday.substring(3,5));
-        int year = Integer.parseInt(birthday.substring(7,11));
+        int year = Integer.parseInt(birthday.substring(6,10));
+
+
         Calendar cal = Calendar.getInstance();
-        return (int)(cal.get(Calendar.YEAR)*365+cal.get(Calendar.MONTH)*30.5+cal.get(Calendar.DAY_OF_MONTH));
+        return (int)(cal.get(Calendar.YEAR-year)*365+cal.get(Calendar.MONTH-month)*30.5+cal.get(Calendar.DAY_OF_MONTH-day));
     }
 
     public void countdown(){
