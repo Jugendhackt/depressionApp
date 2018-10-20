@@ -1,6 +1,7 @@
 package de.jugendhackt.depressionapp;
 
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -8,25 +9,24 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String birthhour = "09:55";
+
     private String birthday = "12.10.2000";
     private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
 
-<<<<<<< HEAD
     private CountDownTimer countDownTimer;
     private long timeLeftInMilliseconds = 10000;
 
     TextView secondsLifeTime;
 
 
-=======
->>>>>>> c7993d6800547acac8d6c3d5ff48244db57a61fa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +35,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
 
-        birthday = pref.getString("birthday", "29.03.2000");
-        sex = pref.getString("sex", "Male");
-        Ort = pref.getString("Ort", null);
-        Name = pref.getString("Name", "Marina Mustermann");
-        timeOfBirth = pref.getString("timeOfBirth", "12:00");
+        birthday = pref.getString("birthday", "12.10.2000");
+        sex = pref.getString("sex", "04:34");
+        Ort = pref.getString("Ort", "Female");
+        Name = pref.getString("Name", "Bayern");
+        timeOfBirth = pref.getString("timeOfBirth", "Test Subjektine");
+
+       // System.out.println(pref.getString("birthday", null));
+
+
 
 
 
@@ -60,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
-<<<<<<< HEAD
         secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
 
 
@@ -99,11 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-=======
-
-
-    }
->>>>>>> c7993d6800547acac8d6c3d5ff48244db57a61fa
 
     public int dayslived(){
         int day = Integer.parseInt(birthday.substring(0,2));
@@ -127,15 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-<<<<<<< HEAD
 
     public void countdown(){
         int secondslived = dayslived()*86400;
         int timeremaining = 1000000000-secondslived;
-=======
-    public int countdown() {
-    return 1000000000 - secsAlive();
->>>>>>> c7993d6800547acac8d6c3d5ff48244db57a61fa
     }
 
     public int lifeexpectancy() {
@@ -349,12 +342,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 break;
-                case "State":
-                switch (sex) {
-                    return expectancy = 81;
-                    break;
-                }
-                break;
         }
         return expectancy;
     }
@@ -368,14 +355,5 @@ public class MainActivity extends AppCompatActivity {
         double m = cal.get(Calendar.MINUTE);
         double s = cal.get(Calendar.SECOND);
         return (int)(((h + m/60 + s/3600) / 24) * 151600);
-    }
-    public int secsAlive() {
-        Calendar cal = Calendar.getInstance();
-        int hour = Integer.parseInt(birthhour.substring(0,2));
-        int minute = Integer.parseInt(birthhour.substring(3,5));
-        double s = cal.get(Calendar.SECOND);
-        double h = cal.get(Calendar.HOUR_OF_DAY);
-        double m = cal.get(Calendar.MINUTE);
-        return (int) ((int) ((dayslived() * 24 + (h - hour)) * 3600 + (m - minute) * 60) + s);
     }
 }
