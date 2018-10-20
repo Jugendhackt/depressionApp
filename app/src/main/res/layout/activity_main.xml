@@ -12,7 +12,7 @@
 
         <TextView
             android:layout_marginTop="10sp"
-            android:id="@+id/wastedLifetimeTvFirst"
+            android:id="@+id/helloTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello Person, you wasted"
