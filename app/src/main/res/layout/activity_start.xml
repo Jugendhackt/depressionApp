@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="247dp"
+        android:layout_marginTop="346dp"
         android:layout_marginEnd="0dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown" />
@@ -34,22 +34,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="181dp"
+        android:layout_marginTop="278dp"
         android:layout_marginEnd="0dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown" />
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/Alter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Alter"
         android:layout_alignParentTop="true"
         android:layout_marginTop="122dp">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Alter" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -65,14 +61,41 @@
             android:hint="Name" />
     </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="-39dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of birth in DD.MM.YYYY" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="200dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time of birth in HH:MM" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="120dp"
+        android:layout_height="81dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="123dp"
-        android:text="BOOP"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:text="Button" />
 
 </RelativeLayout>
