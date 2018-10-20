@@ -86,9 +86,8 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-    public void countdown(){
-        int secondslived = dayslived()*86400;
-        int timeremaining = 1000000000-secondslived;
+    public int countdown() {
+    return 1000000000 - secsAlive();
     }
 
     public int lifeexpectancy() {
