@@ -253,8 +253,8 @@ public class MainActivity extends AppCompatActivity {
         return expectancy;
     }
 
-    public double percentage(){
-
+    public double percentagelived(){
+        return dayslived()/lifeexpectancy();
     }
 
 }
