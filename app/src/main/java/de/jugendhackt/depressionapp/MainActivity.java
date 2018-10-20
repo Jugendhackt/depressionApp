@@ -1,5 +1,6 @@
 package de.jugendhackt.depressionapp;
 
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -15,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        TextView PeopleDead = findViewById(R.id.countdownValueTv);
+        PeopleDead.setText(peopleDied());
 
         TextView wastedLifeTimeTextView = findViewById(R.id.wastedLifetimePercent);
         System.out.println("Halllo");
@@ -273,5 +274,11 @@ public class MainActivity extends AppCompatActivity {
     public double percentagelived(){
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
-
+    public int peopleDied() {
+        Calendar cal = Calendar.getInstance();
+        int h = cal.get(Calendar.HOUR_OF_DAY);
+        int m = cal.get(Calendar.MINUTE);
+        int s = cal.get(Calendar.SECOND);
+        return ((h + m/60 + s/3600) / 24) * 151600;
+    }
 }
