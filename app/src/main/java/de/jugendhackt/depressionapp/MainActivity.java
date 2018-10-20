@@ -1,6 +1,7 @@
 package de.jugendhackt.depressionapp;
 
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -19,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMilliseconds = 100000;
+
+    TextView secondsLifeTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,25 +64,35 @@ public class MainActivity extends AppCompatActivity {
         TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
-        TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
+        secondsLifeTime = findViewById(R.id.countdownValueTv);
 
 
-        loop();
+       // loop();
 
     }
 
 
 
-
+/*
     private void loop() {
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
             @Override
-            public void run() {
-                System.out.println("Eine Sekunde vorbei!");
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMilliseconds = millisUntilFinished;
+
+                secondsLifeTime.setText((int)millisUntilFinished);
+
 
             }
-        }, 0, 1000);//put here time 1000 milliseconds=1 second
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
+*/
+
 
 
 
