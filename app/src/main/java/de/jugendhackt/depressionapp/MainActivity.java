@@ -1,44 +1,68 @@
 package de.jugendhackt.depressionapp;
 
-import android.support.annotation.IdRes;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.time.LocalDate;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private String birthday = "12.10.2000";
+    private String timeOfBirth = "04.34";
+    private String sex = "Female";
+    private String Ort = "Bayern";
+    private String Name = "Max";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
+        SharedPreferences.Editor editor = pref.edit();
+
+        birthday = pref.getString("birthday", null);
+        sex = pref.getString("sex", null);
+        Ort = pref.getString("Ort", null);
+        Name = pref.getString("Name", null);
+        timeOfBirth = pref.getString("timeOfBirth", null);
+
+
+
+
+
         TextView PeopleDead = findViewById(R.id.peopleDiedCounterTv);
         PeopleDead.setText(String.valueOf(peopleDied()));
 
+        DecimalFormat f = new DecimalFormat("#0.00");
+
         TextView wastedLifeTimeTextView = findViewById(R.id.wastedLifetimePercent);
+        wastedLifeTimeTextView.setText(String.valueOf(f.format(percentagelived())) + "%");
+
+        ProgressBar lifetimeProgressBar = findViewById(R.id.wastedLifetimeProgressBar);
+        lifetimeProgressBar.setProgress((int)(percentagelived()));
 
 
-
-
-
-        wastedLifeTimeTextView.setText(String.valueOf(percentagelived()));
-
-
-
+        TextView helloTextView = findViewById(R.id.helloTv);
+        helloTextView.setText("Hello "+ Name+ ", you wasted");
 
 
 
     }
 
+<<<<<<< HEAD
     private String birthday = "12.10.2000";
     private String birthhour = "09:55";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
+=======
+>>>>>>> 02dcff6212f598a73b56989b22bbf2c6467c7922
 
 
 
@@ -55,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(cal.get(Calendar.YEAR));
        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
     }
+
+    /*public int secondslived(){
+        int hour = Integer.parseInt(birthday.substring(0,2));
+        int second = Integer.parseInt(birthday.substring(3,5));
+
+
+        Calendar cal = Calendar.getInstance();
+        System.out.println(cal.get(Calendar.YEAR));
+        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
+    }
+    */
 
     public void countdown(){
         int secondslived = dayslived()*86400;
