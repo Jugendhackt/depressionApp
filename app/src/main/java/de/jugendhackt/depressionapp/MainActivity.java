@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         PeopleDead.setText(peopleDied());
 
         TextView wastedLifeTimeTextView = findViewById(R.id.wastedLifetimePercent);
-        System.out.println("Halllo");
-        System.out.println(dayslived());
+
 
 
        // wastedLifeTimeTextView.setText(String.valueOf(percentagelived()));
