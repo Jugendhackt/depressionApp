@@ -20,19 +20,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void countdown(String birthday){
+    private String birthday;
+    private String sex;
+    private String Ort;
+    private String Name;
+
+    private int dayslived(){
         int day = Integer.parseInt(birthday.substring(0,2));
         int month = Integer.parseInt(birthday.substring(3,5));
         int year = Integer.parseInt(birthday.substring(7,11));
         Calendar cal = Calendar.getInstance();
-        int dayslived = (int)(cal.get(Calendar.YEAR)*365+cal.get(Calendar.MONTH)*30.5+cal.get(Calendar.DAY_OF_MONTH));
-        int secondslived = dayslived*86400;
+        return (int)(cal.get(Calendar.YEAR)*365+cal.get(Calendar.MONTH)*30.5+cal.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public void countdown(){
+        int secondslived = dayslived()*86400;
         int timeremaining = 1000000000-secondslived;
     }
 
-    public int lifeexpectancy(String ort, String sex) {
+    public int lifeexpectancy() {
         int expectancy = 0;
-        switch (ort) {
+        switch (Ort) {
             case "Baden-Württemberg":
                 switch (sex) {
                     case "Male":
@@ -243,6 +251,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return expectancy;
+    }
+
+    public double percentage(){
+
     }
 
 }
