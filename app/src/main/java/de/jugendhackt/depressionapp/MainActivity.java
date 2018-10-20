@@ -55,16 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
     private String birthday = "12.10.2000";
     private String birthhour = "09:55";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
-=======
->>>>>>> 02dcff6212f598a73b56989b22bbf2c6467c7922
-
-
 
 
 
@@ -323,9 +318,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public int secsAlive() {
         Calendar cal = Calendar.getInstance();
-        int day = Integer.parseInt(birthday.substring(0,2));
-        int month = Integer.parseInt(birthday.substring(3,5));
-        int year = Integer.parseInt(birthday.substring(6,10));
         int hour = Integer.parseInt(birthhour.substring(0,2));
         int minute = Integer.parseInt(birthhour.substring(3,5));
         double s = cal.get(Calendar.SECOND);
