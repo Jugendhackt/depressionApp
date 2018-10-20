@@ -6,10 +6,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10sp">
 
 
         <TextView
+            android:layout_marginTop="10sp"
             android:id="@+id/wastedLifetimeTvFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,16 +42,16 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:max="100"
             android:progress="60" />
 
         <View
             android:layout_width="fill_parent"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="0dp"
             android:layout_height="5dip"
             android:background="#000" />
 
@@ -58,7 +60,7 @@
             android:id="@+id/countdownTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Countdown (to one billion seconds lifetime):"
+            android:text="Countdown to your billionth second:"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -75,9 +77,9 @@
         <View
             android:layout_width="fill_parent"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="0dp"
             android:layout_height="5dip"
             android:background="#000" />
 
@@ -85,9 +87,9 @@
             android:id="@+id/whatArchievedTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What others achieved in you age:"
+            android:text="What others achieved at you age:"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
@@ -95,14 +97,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
-            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
+            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            android:textSize="20sp" />
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="5dip"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
             android:background="#000" />
 
