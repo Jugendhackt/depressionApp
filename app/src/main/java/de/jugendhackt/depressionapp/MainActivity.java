@@ -1,5 +1,5 @@
 package de.jugendhackt.depressionapp;
-
+//import android libraries
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -8,21 +8,19 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+//import java libraries
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class MainActivity extends AppCompatActivity {
 
 
+public class git MainActivity extends AppCompatActivity {
+
+    //needed variables
     private String birthday = "12.10.2000";
     private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
-
 
 
     private CountDownTimer countDownTimer;
@@ -37,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        //"access" to Textfields in UI
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
@@ -62,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.wastedLifetimeProgressBar);
         View trennlinie1 = findViewById(R.id.line1);
 
-
-
+        //hiding  information fields user does not want to see
 
         if (!pref.getBoolean("wastedLifetimeCheckbox", true)) {
             helloTextView.setVisibility(View.GONE);
@@ -214,32 +210,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void clickDoNothing(View v)
+    public void clickDoNothing(View v)//does nothing and insults you
     {
         Toast.makeText(getApplicationContext(), "Can't you read?", Toast.LENGTH_SHORT).show();
     }
 
-
-
-
-    /*public int secondslived(){
-        int hour = Integer.parseInt(birthday.substring(0,2));
-        int second = Integer.parseInt(birthday.substring(3,5));
-
-
-        Calendar cal = Calendar.getInstance();
-        System.out.println(cal.get(Calendar.YEAR));
-        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
-    }
-    */
-
-
-    public void countdown(){
+    public void countdown(){//countdown to your billionth second subtracting your age in seconds
         int secondslived = dayslived()*86400;
         int timeremaining = 1000000000-secondslived;
     }
 
-    public int lifeexpectancy() {
+    public int lifeexpectancy() {//assigning life expectancies dependant of sex and residence using switch case
         int expectancy = 80;
         switch (Ort) {
             case "Baden-Württemberg":
@@ -469,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void choosePerson() {
+    private void choosePerson() {//gives a ("motivational") quote
         TextView personTextView = findViewById(R.id.whatArchievedTvText);
         TextView ageTextView = findViewById(R.id.whatArchievedTv);
         int yearsOld = (int)(dayslived()/365.25);
@@ -592,10 +573,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public double percentagelived(){
+    public double percentagelived(){//returns the percentage of passed live in relation to average life expectancy
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
-    public int peopleDied() {
+    public int peopleDied() {//counts dead people by multiplying the percentage of the current day that as already passed with the average number of dead people per day
         Calendar cal = Calendar.getInstance();
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
@@ -604,7 +585,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public int dayslived(){
+    public int dayslived(){//returns age in days
         double day = Integer.parseInt(birthday.substring(0,2));
         double month = Integer.parseInt(birthday.substring(3,5));
         double year = Integer.parseInt(birthday.substring(6,10));
@@ -618,7 +599,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public double secsAlive() {
+    public double secsAlive() {//return age in seconds
         Calendar cal = Calendar.getInstance();
         double hour = Integer.parseInt(timeOfBirth.substring(0,2));
         double minute = Integer.parseInt(timeOfBirth.substring(3,5));
