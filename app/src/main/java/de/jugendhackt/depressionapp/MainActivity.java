@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class git MainActivity extends AppCompatActivity {
 
 //needed variables
     private String birthday;
