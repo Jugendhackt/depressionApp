@@ -18,7 +18,7 @@ public class ChoosingActivity extends AppCompatActivity {
     Boolean dCCBoolean = false;
     Boolean dRCBoolean = false;
     Boolean fACBoolean = false;
-
+    //Checkboxes are not checked by default by assigning boolean values
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -205,12 +205,12 @@ public class MainActivity extends AppCompatActivity {
     */
 
 
-    public void countdown(){
+    public void countdown(){ //countdown to your billionth second subtracting your age in seconds
         int secondslived = dayslived()*86400;
         int timeremaining = 1000000000-secondslived;
     }
 
-    public int lifeexpectancy() {
+    public int lifeexpectancy() {//assigning life expectancies dependant of sex and residence using switch case
         int expectancy = 80;
         switch (Ort) {
             case "Baden-Württemberg":
@@ -438,10 +438,10 @@ public class MainActivity extends AppCompatActivity {
         return expectancy;
     }
 
-    public double percentagelived(){
+    public double percentagelived(){//gives the percentage of passed live in relation to average life expectancy
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
-    public int peopleDied() {
+    public int peopleDied() {//counts dead people by multiplying the percentage of the current day that as already passed with the average number of dead people per day
         Calendar cal = Calendar.getInstance();
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
@@ -450,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public int secsAlive() {
+    public int secsAlive() {//returns age in seconds by subtracting date of birth from current date
         Calendar cal = Calendar.getInstance();
         int hour = Integer.parseInt(timeOfBirth.substring(0,2));
         int minute = Integer.parseInt(timeOfBirth.substring(3,5));
