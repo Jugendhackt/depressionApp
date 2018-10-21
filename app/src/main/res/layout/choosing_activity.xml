@@ -7,11 +7,13 @@
 
     <CheckBox
         android:id="@+id/wastedLifetimeCheckbox"
-        android:layout_width="130dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="61dp"
+        android:checked="true"
         android:text="Wasted lifetime"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choosingText" />
 
@@ -19,10 +21,11 @@
         android:id="@+id/deathCountdownCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
-        android:checked="false"
+        android:checked="true"
         android:text="Countdown for your anticipated death"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wastedLifetimeCheckbox" />
 
@@ -30,9 +33,11 @@
         android:id="@+id/famousAchievementsCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
+        android:checked="true"
         android:text="What famous people achieved in your age"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deathCountdownCheckbox" />
 
@@ -40,9 +45,11 @@
         android:id="@+id/deathRateCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
+        android:checked="true"
         android:text="Daily death rate"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/famousAchievementsCheckbox" />
 

@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+        choosePerson();
+
+
         TextView helloTextView = findViewById(R.id.helloTv);
         TextView wastedLifetimeTextView = findViewById(R.id.wastedLifetimePercent);
         TextView wastedLifetimeTextViewText = findViewById(R.id.wastedLifetimeTv);
@@ -438,6 +443,131 @@ public class MainActivity extends AppCompatActivity {
         return expectancy;
     }
 
+
+
+    private void choosePerson() {
+        TextView personTextView = findViewById(R.id.whatArchievedTvText);
+        TextView ageTextView = findViewById(R.id.whatArchievedTv);
+        int yearsOld = (int)(dayslived()/365.25);
+        System.out.println("Tage alt: " + dayslived());
+
+        ageTextView.setText("What others achieved at your age (" + yearsOld + ")");
+
+
+
+
+        switch (yearsOld) {
+            case 10:
+                personTextView.setText("Recording artist Stevie Wonder was signed by Motown records.");
+                break;
+
+            case 11:
+                personTextView.setText("Pilot Victoria Van Meter became the youngest girl ever to fly across the United States.");
+                break;
+
+            case 12:
+                personTextView.setText("Albert Einstein taught himself Euclidean geometry. He also dedicated himself to solving the riddle of the \"huge world.\"");
+                break;
+
+            case 13:
+                personTextView.setText("Pablo Picasso was so skilled at drawing that his father handed over his own brushes and paints and gave up painting.");
+                break;
+
+            case 14:
+                personTextView.setText("Given the choice of a bicycle or guitar as a birthday gift, Kurt Cobain chose guitar.");
+                break;
+
+            case 15:
+                personTextView.setText("Anne Frank wrote the final entry in her diary.");
+                break;
+
+            case 16:
+                personTextView.setText("Albert Einstein, with poor grades in geography, history and languages, briefly dropped out of school. He also wrote an essay about a thought experiment that contained the beginnings of the special theory of relativity.");
+                break;
+
+            case 17:
+                personTextView.setText("Nicolo Paganini dazzled audiences with his virtuosity and pawned his violin in order to pay gambling debts.");
+                break;
+
+            case 18:
+                personTextView.setText("19th century composer Franz Schubert wrote nearly 200 songs (including two of his best songs), 3 masses, 3 symphonies, and a great deal of piano and chamber music before turning 19.");
+                break;
+
+            case 19:
+                personTextView.setText("Randy Gardner stayed awake for 264 hours for a high school science project.");
+                break;
+
+            case 20:
+                personTextView.setText("Sir Isaac Newton began developing a new branch of mathematics that would help him precisely predict the position of the planets at any given time. Today we call this branch differential and integral calculus.");
+                break;
+
+            case 21:
+                personTextView.setText("College dropout Steven Jobs co-founded Apple Computer.");
+                break;
+
+            case 22:
+                personTextView.setText("Charles Darwin set off as ship's naturalist on a voyage to South America and the Galapagos Islands.");
+                break;
+
+            case 23:
+                personTextView.setText("Jamaican-born Barrington Irving became the youngest person to fly around the world solo. He had constructed the plane from over $300,000 in donated parts.");
+                break;
+
+            case 24:
+                personTextView.setText("Johannes Kepler defended the Copernican theory and described the structure of the solar system.");
+                break;
+
+            case 25:
+                personTextView.setText("By this age, Charles Chaplin had appeared in 35 films.");
+                break;
+
+            default:
+                switch (yearsOld/5) {
+                    case 6:
+                        personTextView.setText("Bill Gates was the first person ever to become a billionaire by age 30.");
+                        break;
+
+                    case 7:
+                        personTextView.setText("Amedeo Avogadro developed Avogadro's hypothesis.");
+                        break;
+
+                    case 8:
+                        personTextView.setText("John Glenn became the first American to orbit the Earth.");
+                        break;
+
+                    case 9:
+                        personTextView.setText("Andre Marie Ampere, a French physicist, discovered the rules relating magnetic fields and electric currents.");
+                        break;
+
+                    case 10:
+                        personTextView.setText("Hermann Hesse wrote Steppenwolf, which dealt with man's double nature.");
+                        break;
+
+                    case 11:
+                        personTextView.setText("Einstein achieved a major new result in the general theory of relativity.");
+                        break;
+
+                    case 12:
+                        personTextView.setText("Benjamin Franklin helped draft the Declaration of Independence.");
+                        break;
+
+                    case 13:
+                        personTextView.setText("Warren Buffett set up a $30 billion contribution to the Bill and Melinda Gates Foundation for use in various world-wide cheritable causes.");
+                        break;
+
+                    case 14:
+                        personTextView.setText("Michelangelo created the architectural plans for the Church of Santa Maria degli Angeli.");
+                        break;
+                }
+
+
+
+        }
+
+    }
+
+
+
     public double percentagelived(){
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
@@ -451,14 +581,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public int dayslived(){
-        int day = Integer.parseInt(birthday.substring(0,2));
-        int month = Integer.parseInt(birthday.substring(3,5));
-        int year = Integer.parseInt(birthday.substring(6,10));
+        double day = Integer.parseInt(birthday.substring(0,2));
+        double month = Integer.parseInt(birthday.substring(3,5));
+        double year = Integer.parseInt(birthday.substring(6,10));
 
 
         Calendar cal = Calendar.getInstance();
-        System.out.println(cal.get(Calendar.YEAR));
-        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
+
+        System.out.println((cal.get(Calendar.YEAR) + " " + cal.get(Calendar.MONTH) + " " + cal.get(Calendar.DAY_OF_MONTH)));
+
+        return (int)((cal.get(Calendar.YEAR)-year)*365.25+(cal.get(Calendar.MONTH) + 1 -month)*30.43687+(cal.get(Calendar.DAY_OF_MONTH)-day));
     }
 
 
