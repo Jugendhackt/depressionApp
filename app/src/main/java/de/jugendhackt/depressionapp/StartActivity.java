@@ -19,6 +19,7 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //sets sex
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         Spinner dropdown = findViewById(R.id.spinner);
@@ -27,7 +28,9 @@ public class StartActivity extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
         Spinner dropdown1 = findViewById(R.id.spinner1);
-        String[] items1 = new String[]{"State", "Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", "Bremen","Hamburg",
+        //array with regions of residence
+        String[] items1 = new String[]{
+                "State", "Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", "Bremen","Hamburg",
                 "Hessen","Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
                 "Saarland","Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items1);
@@ -37,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
 
 
     }
-
+        //what happens when you click a button
     public void onClickBtn(View v)
     {
         TextView bd = findViewById(R.id.Date);
@@ -52,17 +55,12 @@ public class StartActivity extends AppCompatActivity {
 
         if(bd.getText().toString().trim().length() < 1) {
             bd.setText("11.10.1980");
-            System.out.println("Übergeben");
         }
 
         if(tb.getText().toString().trim().length() < 1) {
             tb.setText("11:40");
         }
-
-
-
-
-
+        //accesses information shared amongst all classes
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
         SharedPreferences.Editor editor = pref.edit();
         Intent intent = new Intent(this, ChoosingActivity.class);

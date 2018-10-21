@@ -12,18 +12,16 @@ import android.widget.TextView;
 
 public class ChoosingActivity extends AppCompatActivity {
 
-
-
-    Boolean wLCBoolean = false;
-    Boolean dCCBoolean = false;
-    Boolean dRCBoolean = false;
-    Boolean fACBoolean = false;
-
+    //Checkboxes are checked by default by assigning boolean values
+    Boolean wLCBoolean = true;
+    Boolean dCCBoolean = true;
+    Boolean dRCBoolean = true;
+    Boolean fACBoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//checking buttons selected value
         setContentView(R.layout.choosing_activity);
 
         CheckBox wLC = findViewById(R.id.wastedLifetimeCheckbox);
@@ -73,9 +71,7 @@ public class ChoosingActivity extends AppCompatActivity {
 
     public void onClickNext(View v)
     {
-
-
-
+        //accesses shared information amongst all classes
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
         SharedPreferences.Editor editor = pref.edit();
         Intent intent = new Intent(this, MainActivity.class);
