@@ -4,8 +4,10 @@ import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -21,16 +23,21 @@ public class MainActivity extends AppCompatActivity {
     private String Ort = "Bayern";
     private String Name = "Max";
 
+
+
     private CountDownTimer countDownTimer;
-    private long timeLeftInMilliseconds = 10000;
+    private long timeLeftInSeconds = 10000;
 
     TextView secondsLifeTime;
+    TextView PeopleDead;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
@@ -41,15 +48,79 @@ public class MainActivity extends AppCompatActivity {
         Name = pref.getString("Name", "Marina");
         timeOfBirth = pref.getString("timeOfBirth", "12:00");
 
-       // System.out.println(pref.getString("birthday", null));
+
+
+        TextView helloTextView = findViewById(R.id.helloTv);
+        TextView wastedLifetimeTextView = findViewById(R.id.wastedLifetimePercent);
+        TextView wastedLifetimeTextViewText = findViewById(R.id.wastedLifetimeTv);
+        ProgressBar progressBar = findViewById(R.id.wastedLifetimeProgressBar);
+        View trennlinie1 = findViewById(R.id.line1);
 
 
 
 
+        if (!pref.getBoolean("wastedLifetimeCheckbox", true)) {
+            helloTextView.setVisibility(View.GONE);
+            wastedLifetimeTextView.setVisibility(View.GONE);
+            wastedLifetimeTextViewText.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
+            trennlinie1.setVisibility(View.GONE);
+        } else {
+            helloTextView.setVisibility(View.VISIBLE);
+            wastedLifetimeTextView.setVisibility(View.VISIBLE);
+            wastedLifetimeTextViewText.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
+            trennlinie1.setVisibility(View.VISIBLE);
+        }
+
+
+        TextView coundownTextView = findViewById(R.id.countdownTv);
+        TextView countdownValueTextView = findViewById(R.id.countdownValueTv);
+        View trennlinie2 = findViewById(R.id.line2);
+
+        if (!pref.getBoolean("deathCountdownCheckbox", true)) {
+            coundownTextView.setVisibility(View.GONE);
+            countdownValueTextView.setVisibility(View.GONE);
+            trennlinie2.setVisibility(View.GONE);
+
+        } else {
+            coundownTextView.setVisibility(View.VISIBLE);
+            countdownValueTextView.setVisibility(View.VISIBLE);
+            trennlinie2.setVisibility(View.VISIBLE);
+        }
+
+
+        TextView whatArchievedTv = findViewById(R.id.whatArchievedTv);
+        TextView whatArchievedTvText = findViewById(R.id.whatArchievedTvText);
+        View trennlinie3 = findViewById(R.id.line3);
+
+        if (!pref.getBoolean("famousAchievementsCheckbox", true)) {
+            whatArchievedTv.setVisibility(View.GONE);
+            whatArchievedTvText.setVisibility(View.GONE);
+            trennlinie3.setVisibility(View.GONE);
+
+        } else {
+            whatArchievedTv.setVisibility(View.VISIBLE);
+            whatArchievedTvText.setVisibility(View.VISIBLE);
+            trennlinie3.setVisibility(View.VISIBLE);
+        }
+
+
+        TextView peopleDiedTextView = findViewById(R.id.peopleDiedTv);
+        TextView peopleDiedCounterTextView = findViewById(R.id.peopleDiedCounterTv);
+
+        if (!pref.getBoolean("deathRateCheckbox", true)) {
+            peopleDiedTextView.setVisibility(View.GONE);
+            peopleDiedCounterTextView.setVisibility(View.GONE);
+
+        } else {
+            peopleDiedTextView.setVisibility(View.VISIBLE);
+            peopleDiedCounterTextView.setVisibility(View.VISIBLE);
+        }
 
 
 
-        TextView PeopleDead = findViewById(R.id.peopleDiedCounterTv);
+        PeopleDead = findViewById(R.id.peopleDiedCounterTv);
         PeopleDead.setText(String.valueOf(peopleDied()));
 
         DecimalFormat f = new DecimalFormat("#0.00");
@@ -61,24 +132,29 @@ public class MainActivity extends AppCompatActivity {
         lifetimeProgressBar.setProgress((int)(percentagelived()));
 
 
-        TextView helloTextView = findViewById(R.id.helloTv);
+        helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
+
+        timeLeftInSeconds = secsAlive();
+
 
         secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
 
 
 
 
-
-        countDownTimer = new CountDownTimer(timeLeftInMilliseconds*1000, 1000) {
+        countDownTimer = new CountDownTimer(timeLeftInSeconds*1000, 1000) {
             TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
             @Override
             public void onTick(long millisUntilFinished) {
-                timeLeftInMilliseconds = millisUntilFinished;
+                timeLeftInSeconds = millisUntilFinished;
 
-               // secondsLifeTime.setText((int)millisUntilFinished);
-               // secondsLifeTime.setText("H");
+
                 secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
+
+                PeopleDead.setText(String.valueOf(peopleDied()));
+
+
 
 
             }
@@ -100,7 +176,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    public void clickDoNothing(View v)
+    {
+        Toast.makeText(getApplicationContext(), "Can't you read?", Toast.LENGTH_SHORT).show();
+    }
 
 
     public int dayslived(){
@@ -369,6 +448,8 @@ public class MainActivity extends AppCompatActivity {
         double s = cal.get(Calendar.SECOND);
         return (int)(((h + m/60 + s/3600) / 24) * 151600);
     }
+
+
     public int secsAlive() {
         Calendar cal = Calendar.getInstance();
         int hour = Integer.parseInt(timeOfBirth.substring(0,2));

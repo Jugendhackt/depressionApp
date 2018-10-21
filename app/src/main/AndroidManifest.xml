@@ -23,7 +23,13 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ChoosingActivity">
+        </activity>
+
+        <activity
+            android:name=".ChoosingActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".StartActivity">
         </activity>
 
 

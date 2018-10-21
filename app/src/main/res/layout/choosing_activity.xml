@@ -5,21 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/nextButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="50dp"
-        android:text="next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <CheckBox
         android:id="@+id/wastedLifetimeCheckbox"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="61dp"
@@ -28,7 +16,7 @@
         app:layout_constraintTop_toBottomOf="@+id/choosingText" />
 
     <CheckBox
-        android:id="@+id/deathCountdownCneckbox"
+        android:id="@+id/deathCountdownCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -46,7 +34,7 @@
         android:layout_marginTop="48dp"
         android:text="What famous people achieved in your age"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deathCountdownCneckbox" />
+        app:layout_constraintTop_toBottomOf="@+id/deathCountdownCheckbox" />
 
     <CheckBox
         android:id="@+id/deathRateCheckbox"
@@ -60,16 +48,30 @@
 
     <TextView
         android:id="@+id/choosingText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:text="Please mark the features you want us to inform you:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/nextButtonNext"
+        android:layout_width="120dp"
+        android:layout_height="81dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:onClick="onClickNext"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 

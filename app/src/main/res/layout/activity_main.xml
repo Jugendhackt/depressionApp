@@ -47,12 +47,13 @@
             android:progress="60" />
 
         <View
+            android:id="@+id/line1"
             android:layout_width="fill_parent"
+            android:layout_height="5dip"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="0dp"
-            android:layout_height="5dip"
             android:background="#000" />
 
 
@@ -75,19 +76,20 @@
 
 
         <View
+            android:id="@+id/line2"
             android:layout_width="fill_parent"
+            android:layout_height="5dip"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="0dp"
-            android:layout_height="5dip"
             android:background="#000" />
 
         <TextView
             android:id="@+id/whatArchievedTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What others achieved at you age:"
+            android:text="What others achieved at your age:"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -100,6 +102,7 @@
             android:textSize="20sp" />
 
         <View
+            android:id="@+id/line3"
             android:layout_width="fill_parent"
             android:layout_height="5dip"
             android:layout_marginLeft="0dp"
@@ -130,6 +133,7 @@
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:onClick="clickDoNothing"
             android:text="I don´t do anything!" />
 
     </LinearLayout>

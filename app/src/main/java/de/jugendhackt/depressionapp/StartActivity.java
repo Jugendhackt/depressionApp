@@ -45,9 +45,27 @@ public class StartActivity extends AppCompatActivity {
         TextView tb = findViewById(R.id.Hours);
         Spinner sx = findViewById(R.id.spinner);
         Spinner rt = findViewById(R.id.spinner1);
+
+        if(Nm.getText().toString().trim().length() < 1) {
+            Nm.setText("Test Subjektive");
+        }
+
+        if(bd.getText().toString().trim().length() < 1) {
+            bd.setText("11.10.1980");
+            System.out.println("Übergeben");
+        }
+
+        if(tb.getText().toString().trim().length() < 1) {
+            tb.setText("11:40");
+        }
+
+
+
+
+
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
         SharedPreferences.Editor editor = pref.edit();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ChoosingActivity.class);
         editor.putString("birthday", bd.getText().toString());
         editor.putString("Name", Nm.getText().toString());
         editor.putString("timeOfBirth", tb.getText().toString());
