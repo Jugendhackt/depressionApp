@@ -1,5 +1,5 @@
 package de.jugendhackt.depressionapp;
-//import android libraries
+
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +8,20 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-//import java libraries
+
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class git MainActivity extends AppCompatActivity {
 
-//needed variables
-    private String birthday;
-    private String timeOfBirth;
-    private String sex;
-    private String Ort;
-    private String Name;
+
+    private String birthday = "12.10.2000";
+    private String timeOfBirth = "04:34";
+    private String sex = "Female";
+    private String Ort = "Bayern";
+    private String Name = "Max";
 
 
 
@@ -46,7 +48,13 @@ public class git MainActivity extends AppCompatActivity {
         Name = pref.getString("Name", "Marina");
         timeOfBirth = pref.getString("timeOfBirth", "12:00");
 
-        //"access" to Textfields in UI
+
+
+
+
+        choosePerson();
+
+
         TextView helloTextView = findViewById(R.id.helloTv);
         TextView wastedLifetimeTextView = findViewById(R.id.wastedLifetimePercent);
         TextView wastedLifetimeTextViewText = findViewById(R.id.wastedLifetimeTv);
@@ -55,7 +63,7 @@ public class git MainActivity extends AppCompatActivity {
 
 
 
-//hiding  information fields user does not want to see
+
         if (!pref.getBoolean("wastedLifetimeCheckbox", true)) {
             helloTextView.setVisibility(View.GONE);
             wastedLifetimeTextView.setVisibility(View.GONE);
@@ -128,8 +136,10 @@ public class git MainActivity extends AppCompatActivity {
         ProgressBar lifetimeProgressBar = findViewById(R.id.wastedLifetimeProgressBar);
         lifetimeProgressBar.setProgress((int)(percentagelived()));
 
+
         helloTextView = findViewById(R.id.helloTv);
-        helloTextView.setText("Hello "+ Ngiame+ ", you wasted");
+        helloTextView.setText("Hello "+ Name+ ", you wasted");
+
 
         if((1000000000 - (int)secsAlive()) > 0) {
             timeLeftInSeconds = 1000000000 - (int) secsAlive();
@@ -168,20 +178,45 @@ public class git MainActivity extends AppCompatActivity {
 
             }
         }.start();
+
+
+
+       // loop();
+
     }
 
-    public void clickDoNothing(View v)//does nothing and insults you
+
+
+
+
+
+    public void clickDoNothing(View v)
     {
         Toast.makeText(getApplicationContext(), "Can't you read?", Toast.LENGTH_SHORT).show();
     }
 
-    public void countdown(){ //countdown to your billionth second subtracting your age in seconds
+
+
+
+    /*public int secondslived(){
+        int hour = Integer.parseInt(birthday.substring(0,2));
+        int second = Integer.parseInt(birthday.substring(3,5));
+
+
+        Calendar cal = Calendar.getInstance();
+        System.out.println(cal.get(Calendar.YEAR));
+        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
+    }
+    */
+
+
+    public void countdown(){
         int secondslived = dayslived()*86400;
         int timeremaining = 1000000000-secondslived;
     }
 
-    public int lifeexpectancy() {//assigning life expectancies dependant of sex and residence using switch case
-        int expectancy;
+    public int lifeexpectancy() {
+        int expectancy = 80;
         switch (Ort) {
             case "Baden-Württemberg":
                 switch (sex) {
@@ -408,29 +443,158 @@ public class git MainActivity extends AppCompatActivity {
         return expectancy;
     }
 
-    public double percentagelived(){//returns the percentage of passed live in relation to average life expectancy
+
+
+    private void choosePerson() {
+        TextView personTextView = findViewById(R.id.whatArchievedTvText);
+        TextView ageTextView = findViewById(R.id.whatArchievedTv);
+        int yearsOld = (int)(dayslived()/365.25);
+        System.out.println("Tage alt: " + dayslived());
+
+        ageTextView.setText("What others achieved at your age (" + yearsOld + ")");
+
+
+
+
+        switch (yearsOld) {
+            case 10:
+                personTextView.setText("Recording artist Stevie Wonder was signed by Motown records.");
+                break;
+
+            case 11:
+                personTextView.setText("Pilot Victoria Van Meter became the youngest girl ever to fly across the United States.");
+                break;
+
+            case 12:
+                personTextView.setText("Albert Einstein taught himself Euclidean geometry. He also dedicated himself to solving the riddle of the \"huge world.\"");
+                break;
+
+            case 13:
+                personTextView.setText("Pablo Picasso was so skilled at drawing that his father handed over his own brushes and paints and gave up painting.");
+                break;
+
+            case 14:
+                personTextView.setText("Given the choice of a bicycle or guitar as a birthday gift, Kurt Cobain chose guitar.");
+                break;
+
+            case 15:
+                personTextView.setText("Anne Frank wrote the final entry in her diary.");
+                break;
+
+            case 16:
+                personTextView.setText("Albert Einstein, with poor grades in geography, history and languages, briefly dropped out of school. He also wrote an essay about a thought experiment that contained the beginnings of the special theory of relativity.");
+                break;
+
+            case 17:
+                personTextView.setText("Nicolo Paganini dazzled audiences with his virtuosity and pawned his violin in order to pay gambling debts.");
+                break;
+
+            case 18:
+                personTextView.setText("19th century composer Franz Schubert wrote nearly 200 songs (including two of his best songs), 3 masses, 3 symphonies, and a great deal of piano and chamber music before turning 19.");
+                break;
+
+            case 19:
+                personTextView.setText("Randy Gardner stayed awake for 264 hours for a high school science project.");
+                break;
+
+            case 20:
+                personTextView.setText("Sir Isaac Newton began developing a new branch of mathematics that would help him precisely predict the position of the planets at any given time. Today we call this branch differential and integral calculus.");
+                break;
+
+            case 21:
+                personTextView.setText("College dropout Steven Jobs co-founded Apple Computer.");
+                break;
+
+            case 22:
+                personTextView.setText("Charles Darwin set off as ship's naturalist on a voyage to South America and the Galapagos Islands.");
+                break;
+
+            case 23:
+                personTextView.setText("Jamaican-born Barrington Irving became the youngest person to fly around the world solo. He had constructed the plane from over $300,000 in donated parts.");
+                break;
+
+            case 24:
+                personTextView.setText("Johannes Kepler defended the Copernican theory and described the structure of the solar system.");
+                break;
+
+            case 25:
+                personTextView.setText("By this age, Charles Chaplin had appeared in 35 films.");
+                break;
+
+            default:
+                switch (yearsOld/5) {
+                    case 6:
+                        personTextView.setText("Bill Gates was the first person ever to become a billionaire by age 30.");
+                        break;
+
+                    case 7:
+                        personTextView.setText("Amedeo Avogadro developed Avogadro's hypothesis.");
+                        break;
+
+                    case 8:
+                        personTextView.setText("John Glenn became the first American to orbit the Earth.");
+                        break;
+
+                    case 9:
+                        personTextView.setText("Andre Marie Ampere, a French physicist, discovered the rules relating magnetic fields and electric currents.");
+                        break;
+
+                    case 10:
+                        personTextView.setText("Hermann Hesse wrote Steppenwolf, which dealt with man's double nature.");
+                        break;
+
+                    case 11:
+                        personTextView.setText("Einstein achieved a major new result in the general theory of relativity.");
+                        break;
+
+                    case 12:
+                        personTextView.setText("Benjamin Franklin helped draft the Declaration of Independence.");
+                        break;
+
+                    case 13:
+                        personTextView.setText("Warren Buffett set up a $30 billion contribution to the Bill and Melinda Gates Foundation for use in various world-wide cheritable causes.");
+                        break;
+
+                    case 14:
+                        personTextView.setText("Michelangelo created the architectural plans for the Church of Santa Maria degli Angeli.");
+                        break;
+                }
+
+
+
+        }
+
+    }
+
+
+
+    public double percentagelived(){
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
-    public int peopleDied() {//counts dead people by multiplying the percentage of the current day that as already passed with the average number of dead people per day
+    public int peopleDied() {
         Calendar cal = Calendar.getInstance();
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
         double s = cal.get(Calendar.SECOND);
         return (int)(((h + m/60 + s/3600) / 24) * 151600);
     }
-    public int dayslived(){//returns age in days
-        int day = Integer.parseInt(birthday.substring(0,2));
-        int month = Integer.parseInt(birthday.substring(3,5));
-        int year = Integer.parseInt(birthday.substring(6,10));
+
+
+    public int dayslived(){
+        double day = Integer.parseInt(birthday.substring(0,2));
+        double month = Integer.parseInt(birthday.substring(3,5));
+        double year = Integer.parseInt(birthday.substring(6,10));
 
 
         Calendar cal = Calendar.getInstance();
-        System.out.println(cal.get(Calendar.YEAR));
-        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
+
+        System.out.println((cal.get(Calendar.YEAR) + " " + cal.get(Calendar.MONTH) + " " + cal.get(Calendar.DAY_OF_MONTH)));
+
+        return (int)((cal.get(Calendar.YEAR)-year)*365.25+(cal.get(Calendar.MONTH) + 1 -month)*30.43687+(cal.get(Calendar.DAY_OF_MONTH)-day));
     }
 
 
-    public double secsAlive() {//return age in seconds
+    public double secsAlive() {
         Calendar cal = Calendar.getInstance();
         double hour = Integer.parseInt(timeOfBirth.substring(0,2));
         double minute = Integer.parseInt(timeOfBirth.substring(3,5));
