@@ -135,7 +135,14 @@ public class MainActivity extends AppCompatActivity {
         helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
-        timeLeftInSeconds = secsAlive();
+
+        if((1000000000 - (int)secsAlive()) > 0) {
+            timeLeftInSeconds = 1000000000 - (int) secsAlive();
+        } else {
+            timeLeftInSeconds = 1;
+            System.out.println("Works");
+        }
+
 
 
         secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
@@ -162,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
+                secondsLifeTime.setText("You missed. You're too late!");
+
             }
         }.start();
 
@@ -182,16 +191,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public int dayslived(){
-        int day = Integer.parseInt(birthday.substring(0,2));
-        int month = Integer.parseInt(birthday.substring(3,5));
-        int year = Integer.parseInt(birthday.substring(6,10));
 
-
-        Calendar cal = Calendar.getInstance();
-        System.out.println(cal.get(Calendar.YEAR));
-       return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
-    }
 
     /*public int secondslived(){
         int hour = Integer.parseInt(birthday.substring(0,2));
@@ -450,13 +450,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+<<<<<<< HEAD
     public int secsAlive() {//returns age in seconds by subtracting date of birth from current date
+=======
+    public int dayslived(){
+        int day = Integer.parseInt(birthday.substring(0,2));
+        int month = Integer.parseInt(birthday.substring(3,5));
+        int year = Integer.parseInt(birthday.substring(6,10));
+
+
         Calendar cal = Calendar.getInstance();
-        int hour = Integer.parseInt(timeOfBirth.substring(0,2));
-        int minute = Integer.parseInt(timeOfBirth.substring(3,5));
+        System.out.println(cal.get(Calendar.YEAR));
+        return (int)((cal.get(Calendar.YEAR)-year)*365+(cal.get(Calendar.MONTH)-month)*30.5+(cal.get(Calendar.DAY_OF_MONTH)-day));
+    }
+
+
+    public double secsAlive() {
+>>>>>>> 749a5836515acfc9794cf54616c60cf3cab84833
+        Calendar cal = Calendar.getInstance();
+        double hour = Integer.parseInt(timeOfBirth.substring(0,2));
+        double minute = Integer.parseInt(timeOfBirth.substring(3,5));
         double s = cal.get(Calendar.SECOND);
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
-        return (int) ((int) ((dayslived() * 24 + (h - hour)) * 3600 + (m - minute) * 60) + s);
+        return  ((dayslived() * 24 + (h - hour)) * 3600 + (m - minute) * 60) + s;
     }
 }
