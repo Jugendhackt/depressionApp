@@ -50,11 +50,11 @@ public class StartActivity extends AppCompatActivity {
         Spinner rt = findViewById(R.id.spinner1);
 
         if(Nm.getText().toString().trim().length() < 1) {
-            Nm.setText("Test Subjektive");
+            Nm.setText("Namey McNameface");
         }
 
         if(bd.getText().toString().trim().length() < 1) {
-            bd.setText("11.10.1980");
+            bd.setText("11.10.1995");
         }
 
         if(tb.getText().toString().trim().length() < 1) {

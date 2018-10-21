@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private CountDownTimer countDownTimer;
+    private CountDownTimer countDownTimer2;
     private long timeLeftInSeconds = 10000;
 
     TextView secondsLifeTime;
@@ -164,6 +165,31 @@ public class MainActivity extends AppCompatActivity {
 
                 secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
 
+               // PeopleDead.setText(String.valueOf(peopleDied()));
+
+
+
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                secondsLifeTime.setText("You missed it. You're too late!");
+
+            }
+        }.start();
+
+
+
+       // loop();
+
+
+
+        countDownTimer2 = new CountDownTimer(1000000000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
                 PeopleDead.setText(String.valueOf(peopleDied()));
 
 
@@ -174,14 +200,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
-                secondsLifeTime.setText("You missed. You're too late!");
+
 
             }
         }.start();
 
 
-
-       // loop();
 
     }
 
