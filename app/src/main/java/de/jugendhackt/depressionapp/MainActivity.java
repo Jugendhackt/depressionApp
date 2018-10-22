@@ -11,22 +11,27 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private String birthday = "12.10.2000";
-    private String timeOfBirth = "04:34";
+    //private String birthday = "12.10.2000";
+  //  private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
 
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
+
+    private int birthHour;
+    private int birthMinute;
 
 
-    private CountDownTimer countDownTimer;
-    private CountDownTimer countDownTimer2;
+
+
+
     private long timeLeftInSeconds = 10000;
 
     TextView secondsLifeTime;
@@ -38,16 +43,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        CountDownTimer countDownTimer;
+        CountDownTimer countDownTimer2;
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
         SharedPreferences.Editor editor = pref.edit();
 
-        birthday = pref.getString("birthday", "29.03.2000");
+       // birthday = pref.getString("birthday", "29.03.2000");
         sex = pref.getString("sex", "Male");
         Ort = pref.getString("Ort", null);
         Name = pref.getString("Name", "Marina");
-        timeOfBirth = pref.getString("timeOfBirth", "12:00");
+        //timeOfBirth = pref.getString("timeOfBirth", "12:00");
+
+        birthDay = pref.getInt("birthDay", 0);
+        birthMonth = pref.getInt("birthMonth", 0);
+        birthYear = pref.getInt("birthYear", 0);
+        birthHour = pref.getInt("birthHour", 0);
+        birthMinute = pref.getInt("birthMinute", 0);
 
 
 
@@ -156,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        countDownTimer = new CountDownTimer(timeLeftInSeconds*1000, 1000) {
+        new CountDownTimer(timeLeftInSeconds*1000, 1000) {
             TextView secondsLifeTime = findViewById(R.id.countdownValueTv);
             @Override
             public void onTick(long millisUntilFinished) {
@@ -582,6 +594,9 @@ public class MainActivity extends AppCompatActivity {
                     case 14:
                         personTextView.setText("Michelangelo created the architectural plans for the Church of Santa Maria degli Angeli.");
                         break;
+
+                    default:
+                        personTextView.setText("Jeanne Calment reached an age age of 122 years.");
                 }
 
 
@@ -605,26 +620,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public int dayslived(){
-        double day = Integer.parseInt(birthday.substring(0,2));
-        double month = Integer.parseInt(birthday.substring(3,5));
-        double year = Integer.parseInt(birthday.substring(6,10));
 
 
         Calendar cal = Calendar.getInstance();
 
         System.out.println((cal.get(Calendar.YEAR) + " " + cal.get(Calendar.MONTH) + " " + cal.get(Calendar.DAY_OF_MONTH)));
 
-        return (int)((cal.get(Calendar.YEAR)-year)*365.25+(cal.get(Calendar.MONTH) + 1 -month)*30.43687+(cal.get(Calendar.DAY_OF_MONTH)-day));
+        return (int)((cal.get(Calendar.YEAR)-birthYear)*365.25+(cal.get(Calendar.MONTH) + 1 -birthMonth)*30.43687+(cal.get(Calendar.DAY_OF_MONTH)-birthDay));
     }
 
 
     public double secsAlive() {
         Calendar cal = Calendar.getInstance();
-        double hour = Integer.parseInt(timeOfBirth.substring(0,2));
-        double minute = Integer.parseInt(timeOfBirth.substring(3,5));
+      
         double s = cal.get(Calendar.SECOND);
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
-        return  ((dayslived() * 24 + (h - hour)) * 3600 + (m - minute) * 60) + s;
+        return  ((dayslived() * 24 + (h - birthHour)) * 3600 + (m - birthMinute) * 60) + s;
     }
 }
