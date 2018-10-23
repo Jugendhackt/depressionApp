@@ -24,7 +24,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
         android:checked="true"
-        android:text="Countdown for your anticipated death"
+        android:text="Countdown to the billionth second of your life"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wastedLifetimeCheckbox" />
@@ -60,7 +60,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:text="Please mark the features you want us to inform you:"
+        android:text="Please select the features you want to see:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
