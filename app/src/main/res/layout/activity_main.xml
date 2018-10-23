@@ -129,7 +129,7 @@
             android:id="@+id/peopleDiedTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="People died today:"
+            android:text="Number of people that have died today:"
             android:textAlignment="center"
             android:textColor="#ff0010"
             android:textSize="30dp"

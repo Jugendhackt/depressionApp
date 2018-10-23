@@ -44,7 +44,7 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
 
         Spinner dropdown1 = findViewById(R.id.spinner1);
 
-        //array with regions of residence
+        //array with regions of residence (German)
         String[] items1 = new String[]{
                 "State", "Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", "Bremen","Hamburg",
                 "Hessen","Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
