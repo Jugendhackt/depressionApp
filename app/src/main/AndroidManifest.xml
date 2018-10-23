@@ -22,14 +22,12 @@
 
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ChoosingActivity">
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name=".ChoosingActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".StartActivity">
+            android:screenOrientation="portrait">
         </activity>
 
 
