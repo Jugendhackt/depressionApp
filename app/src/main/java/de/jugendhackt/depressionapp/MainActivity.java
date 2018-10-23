@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private long timeLeftInSeconds = 10000;
 
     TextView secondsLifeTime;
-    TextView PeopleDead;
+    TextView peopleDiedTotal, peopleDiedOfHunger, peopleDiedOfOverweight, peopleDiedBySuicide, roadTrafficDeaths;
 
 
     @Override
@@ -131,19 +131,69 @@ public class MainActivity extends AppCompatActivity {
         TextView peopleDiedTextView = findViewById(R.id.peopleDiedTv);
         TextView peopleDiedCounterTextView = findViewById(R.id.peopleDiedCounterTv);
 
+        TextView peopleDiedOfHungerTextView = findViewById(R.id.peopleDiedOfHungerTv);
+        TextView peopleDiedOfHungerCounterTextView = findViewById(R.id.peopleDiedOfHungerCounterTv);
+
+        TextView peopleDiedOfOverweightTextView = findViewById(R.id.peopleDiedOfOverweightTv);
+        TextView peopleDiedOfOverweightCounterTextView = findViewById(R.id.peopleDiedOfOverweightCounterTv);
+
+        TextView peopleDiedBySuicideTextView = findViewById(R.id.peopleDiedBySuicideTv);
+        TextView peopleDiedBySuicideCounterTextView = findViewById(R.id.peopleDiedBySuicideCounterTv);
+
+        TextView roadTrafficDeathsTextView = findViewById(R.id.roadTrafficDeathsTv);
+        TextView roadTrafficDeathsCounterTextView = findViewById(R.id.roadTrafficDeathsCounterTv);
+
+
         if (!pref.getBoolean("deathRateCheckbox", true)) {
             peopleDiedTextView.setVisibility(View.GONE);
             peopleDiedCounterTextView.setVisibility(View.GONE);
 
+            peopleDiedOfHungerTextView.setVisibility(View.GONE);
+            peopleDiedOfHungerCounterTextView.setVisibility(View.GONE);
+
+            peopleDiedOfOverweightTextView.setVisibility(View.GONE);
+            peopleDiedOfOverweightCounterTextView.setVisibility(View.GONE);
+
+            peopleDiedBySuicideTextView.setVisibility(View.GONE);
+            peopleDiedBySuicideCounterTextView.setVisibility(View.GONE);
+
+            roadTrafficDeathsTextView.setVisibility(View.GONE);
+            roadTrafficDeathsCounterTextView.setVisibility(View.GONE);
+
+
         } else {
             peopleDiedTextView.setVisibility(View.VISIBLE);
             peopleDiedCounterTextView.setVisibility(View.VISIBLE);
+
+            peopleDiedOfHungerTextView.setVisibility(View.VISIBLE);
+            peopleDiedOfHungerCounterTextView.setVisibility(View.VISIBLE);
+
+            peopleDiedOfOverweightTextView.setVisibility(View.VISIBLE);
+            peopleDiedOfOverweightCounterTextView.setVisibility(View.VISIBLE);
+
+            peopleDiedBySuicideTextView.setVisibility(View.VISIBLE);
+            peopleDiedBySuicideCounterTextView.setVisibility(View.VISIBLE);
+
+            roadTrafficDeathsTextView.setVisibility(View.VISIBLE);
+            roadTrafficDeathsCounterTextView.setVisibility(View.VISIBLE);
         }
 
 
 
-        PeopleDead = findViewById(R.id.peopleDiedCounterTv);
-        PeopleDead.setText(String.valueOf(peopleDied()));
+        peopleDiedTotal = findViewById(R.id.peopleDiedCounterTv);
+        peopleDiedTotal.setText(String.valueOf(peopleDied()));
+
+        peopleDiedOfHunger = findViewById(R.id.peopleDiedOfHungerCounterTv);
+        peopleDiedOfHunger.setText(String.valueOf(peopleDiedOfHunger()));
+
+        peopleDiedOfOverweight = findViewById(R.id.peopleDiedOfOverweightCounterTv);
+        peopleDiedOfOverweight.setText(String.valueOf(peopleDiedOfOverweight()));
+
+        peopleDiedBySuicide = findViewById(R.id.peopleDiedBySuicideCounterTv);
+        peopleDiedBySuicide.setText(String.valueOf(peopleDiedBySuicide()));
+
+        roadTrafficDeaths = findViewById(R.id.roadTrafficDeathsCounterTv);
+        roadTrafficDeaths.setText(String.valueOf(peopleDiedByRoadTraffic()));
 
         DecimalFormat f = new DecimalFormat("#0.00");
 
@@ -167,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        secondsLifeTime = (TextView)findViewById(R.id.countdownValueTv);
+        secondsLifeTime = findViewById(R.id.countdownValueTv);
 
 
 
@@ -177,8 +227,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeftInSeconds = millisUntilFinished;
-
-
                 secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
 
                // PeopleDead.setText(String.valueOf(peopleDied()));
@@ -206,9 +254,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                PeopleDead.setText(String.valueOf(peopleDied()));
-
-
+                peopleDiedTotal.setText(String.valueOf(peopleDied()));
+                peopleDiedOfHunger.setText(String.valueOf(peopleDiedOfHunger()));
+                peopleDiedOfOverweight.setText(String.valueOf(peopleDiedOfOverweight()));
+                peopleDiedBySuicide.setText(String.valueOf(peopleDiedBySuicide()));
+                roadTrafficDeaths.setText(String.valueOf(peopleDiedByRoadTraffic()));
 
 
             }
@@ -663,6 +713,40 @@ public class MainActivity extends AppCompatActivity {
         double s = cal.get(Calendar.SECOND);
         return (int)(((h + m/60 + s/3600) / 24) * 151600);
     }
+
+    public int peopleDiedBySuicide() {
+        Calendar cal = Calendar.getInstance();
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        double s = cal.get(Calendar.SECOND);
+        return (int)(((h + m/60 + s/3600) / 24) * 2203);
+    }
+
+    public int peopleDiedOfHunger() {
+        Calendar cal = Calendar.getInstance();
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        double s = cal.get(Calendar.SECOND);
+        return (int)(((h + m/60 + s/3600) / 24) * 24109);
+    }
+
+    public int peopleDiedOfOverweight() {
+        Calendar cal = Calendar.getInstance();
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        double s = cal.get(Calendar.SECOND);
+        return (int)(((h + m/60 + s/3600) / 24) * 7671);
+    }
+
+    public int peopleDiedByRoadTraffic() {
+        Calendar cal = Calendar.getInstance();
+        double h = cal.get(Calendar.HOUR_OF_DAY);
+        double m = cal.get(Calendar.MINUTE);
+        double s = cal.get(Calendar.SECOND);
+        return (int)(((h + m/60 + s/3600) / 24) * 3425);
+    }
+
+
 
 
     public int dayslived(){

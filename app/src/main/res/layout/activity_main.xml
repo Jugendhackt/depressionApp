@@ -125,24 +125,118 @@
             android:background="#fff"
             android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/peopleDiedTv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Number of people that have died today:"
-            android:textAlignment="center"
-            android:textColor="#ff0010"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/peopleDiedCounterTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2490"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/peopleDiedTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total number of people that have died today:"
+                android:textAlignment="center"
+                android:textColor="#ff0010"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/peopleDiedCounterTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2490"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+
+
+            <TextView
+                android:id="@+id/peopleDiedOfHungerTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="People who died of hunger:"
+                android:textAlignment="center"
+                android:textColor="#bbff0010"
+                android:textSize="25sp"
+                android:layout_marginTop="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/peopleDiedOfHungerCounterTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2490"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+
+
+            <TextView
+                android:id="@+id/peopleDiedOfOverweightTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="People who died of overweight:"
+                android:textAlignment="center"
+                android:textColor="#bbff0010"
+                android:textSize="25sp"
+                android:layout_marginTop="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/peopleDiedOfOverweightCounterTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2490"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+
+
+            <TextView
+                android:id="@+id/peopleDiedBySuicideTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="People who died by suicide:"
+                android:textAlignment="center"
+                android:textColor="#bbff0010"
+                android:textSize="25sp"
+                android:layout_marginTop="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/peopleDiedBySuicideCounterTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2490"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/roadTrafficDeathsTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Road traffic deaths:"
+                android:textAlignment="center"
+                android:textColor="#bbff0010"
+                android:textSize="25sp"
+                android:layout_marginTop="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/roadTrafficDeathsCounterTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2490"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+        </LinearLayout>
 
 
         <Button
