@@ -15,12 +15,14 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class StartActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     EditText dateEditText;
     EditText timeEditText;
+    EditText nameEditText;
 
 
     int day, month, year, hour, minute;
@@ -30,15 +32,35 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
     protected void onCreate(Bundle savedInstanceState)
 
     {
+
+        setTheme(R.style.AppTheme);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
+        SharedPreferences.Editor editor = pref.edit();
+
+        if(!(pref.getBoolean("changedSettings", false))) {
+
+            if (pref.getInt("birthDay", 0) != 0) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+
+
         //sets sex
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+
+
         dateEditText = findViewById(R.id.dateOfBirthET);
         timeEditText = findViewById(R.id.timeOfBirthET);
+        nameEditText = findViewById(R.id.userNameET);
 
 
-        Spinner dropdown1 = findViewById(R.id.stateSpinner);
+
+        Spinner stateSpinner = findViewById(R.id.stateSpinner);
 
         //array with regions of residence (German)
         String[] items1 = new String[]{
@@ -46,14 +68,14 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
                 "Hessen","Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
                 "Saarland","Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items1);
-        dropdown1.setAdapter(adapter1);
+        stateSpinner.setAdapter(adapter1);
 
 
         //array with genders
-        Spinner dropdown = findViewById(R.id.genderSpinner);
+        Spinner genderSpinner = findViewById(R.id.genderSpinner);
         String[] items = new String[]{"Gender", "Male", "Female"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+        genderSpinner.setAdapter(adapter);
 
 
 
@@ -64,7 +86,7 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
             public void onClick(View v) {
 
 
-                if (year == 0) {
+                if (yearFinal == 0) {
                     Calendar c = Calendar.getInstance();
                     year = c.get(Calendar.YEAR);
                     month = c.get(Calendar.MONTH);
@@ -94,7 +116,7 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
             @Override
             public void onClick(View v) {
 
-                if (hour == 0) {
+                if (hourFinal == 0) {
                     Calendar c = Calendar.getInstance();
                     hour = c.get(Calendar.HOUR_OF_DAY);
                     minute = c.get(Calendar.MINUTE);
@@ -110,6 +132,69 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
         });
 
 
+
+
+        if(pref.getBoolean("changedSettings", false)) {
+
+            // birthday = pref.getString("birthday", "29.03.2000");
+          //  sex = pref.getString("sex", "Male");
+          //  Ort = pref.getString("Ort", null);
+            //timeOfBirth = pref.getString("timeOfBirth", "12:00");
+
+            nameEditText.setText(pref.getString("Name", "Marina"));
+
+            int indexGender = Arrays.asList(items).indexOf(pref.getString("sex", "Male"));
+            genderSpinner.setSelection(indexGender, false);
+
+            int indexState = Arrays.asList(items1).indexOf(pref.getString("Ort", null));
+            System.out.println(pref.getString("Ort", null));
+            stateSpinner.setSelection(indexState, false);
+
+
+            dayFinal = pref.getInt("birthDay", 0);
+            monthFinal = pref.getInt("birthMonth", 0);
+            yearFinal = pref.getInt("birthYear", 0);
+            hourFinal = pref.getInt("birthHour", 0);
+            minuteFinal = pref.getInt("birthMinute", 0);
+
+
+            String monthFinalString = String.valueOf(monthFinal);
+            String dayFinalString = String.valueOf(dayFinal);
+
+            if (monthFinal < 10) {
+                monthFinalString = addZeroToTheBeginning(monthFinal);
+            }
+
+            if (dayFinal < 10) {
+                dayFinalString = addZeroToTheBeginning(dayFinal);
+            }
+
+            dateEditText.setText(dayFinalString + "." + monthFinalString + "." + String.valueOf(yearFinal));
+
+
+
+
+            String hourFinalString = String.valueOf(hourFinal);
+            String minuteFinalString = String.valueOf(minuteFinal);
+
+
+            if (hourFinal < 10) {
+                hourFinalString = addZeroToTheBeginning(hourFinal);
+            }
+
+            if (minuteFinal < 10) {
+                minuteFinalString = addZeroToTheBeginning(minuteFinal);
+            }
+
+            timeEditText.setText(hourFinalString + ":" + minuteFinalString);
+
+            editor.putBoolean("changedSettings", false);
+
+            editor.commit();
+
+        }
+
+
     }
 
 
@@ -118,7 +203,7 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
     public void onClickBtn(View v)
     {
 
-        TextView nameTextView = findViewById(R.id.userNameET);
+
         Spinner stateSpinner = findViewById(R.id.stateSpinner);
         Spinner genderSpinner = findViewById(R.id.genderSpinner);
 
@@ -141,10 +226,10 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
                 SharedPreferences.Editor editor = pref.edit();
                 Intent intent = new Intent(this, ChoosingActivity.class);
 
-                if (nameTextView.getText().toString().trim().length() < 1) {
+                if (nameEditText.getText().toString().trim().length() < 1) {
                     editor.putString("Name", "Nobody");
                 } else {
-                    editor.putString("Name", nameTextView.getText().toString());
+                    editor.putString("Name", nameEditText.getText().toString());
                 }
 
 
@@ -155,8 +240,8 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
                 editor.putInt("birthHour", hourFinal);
                 editor.putInt("birthMinute", minuteFinal);
 
-                editor.putString("sex", stateSpinner.getSelectedItem().toString());
-                editor.putString("Ort", genderSpinner.getSelectedItem().toString());
+                editor.putString("sex", genderSpinner.getSelectedItem().toString());
+                editor.putString("Ort", stateSpinner.getSelectedItem().toString());
                 editor.commit();
                 startActivity(intent);
 

@@ -1,9 +1,13 @@
 package de.jugendhackt.depressionapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -223,7 +227,49 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        //menu.add("Save").setIcon(R.drawable.ic_launcher_round_start).
+        //setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
+   return true;
+}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+
+                   /* Intent intent = new Intent(this, StartActivity.class);
+                    startActivity(intent);
+                    finish();*/
+
+                //accesses shared information amongst all classes
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                Intent intent = new Intent(this, StartActivity.class);
+
+                editor.putBoolean("changedSettings", true);
+
+                editor.commit();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+
+
+
+                return true;
+
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 
 
     public void clickDoNothing(View v)
