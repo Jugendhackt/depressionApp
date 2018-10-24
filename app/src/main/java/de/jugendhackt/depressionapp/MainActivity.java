@@ -19,8 +19,6 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
 
-    //private String birthday = "12.10.2000";
-  //  private String timeOfBirth = "04:34";
     private String sex = "Female";
     private String Ort = "Bayern";
     private String Name = "Max";
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    SharedPreferences pref;
 
 
     private long timeLeftInSeconds = 10000;
@@ -47,15 +46,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CountDownTimer countDownTimer;
-        CountDownTimer countDownTimer2;
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("Preferences",0);
-        SharedPreferences.Editor editor = pref.edit();
+        pref = getApplicationContext().getSharedPreferences("Preferences",0);
 
        // birthday = pref.getString("birthday", "29.03.2000");
         sex = pref.getString("sex", "Male");
-        Ort = pref.getString("Ort", null);
+        Ort = pref.getString("Ort", "State");
         Name = pref.getString("Name", "Marina");
         //timeOfBirth = pref.getString("timeOfBirth", "12:00");
 
@@ -72,112 +68,26 @@ public class MainActivity extends AppCompatActivity {
         choosePerson();
 
 
-        TextView helloTextView = findViewById(R.id.helloTv);
-        TextView wastedLifetimeTextView = findViewById(R.id.wastedLifetimePercent);
-        TextView wastedLifetimeTextViewText = findViewById(R.id.wastedLifetimeTv);
-        ProgressBar progressBar = findViewById(R.id.wastedLifetimeProgressBar);
-        View trennlinie1 = findViewById(R.id.line1);
+        // Creates a array of Views from the MainActivity
+
+        View[] viewsArray = {
+                findViewById(R.id.wastedLifetimeView),
+                findViewById(R.id.secondsCountdownView),
+                findViewById(R.id.otherAchievedView),
+                findViewById(R.id.dailydeathsView)
+
+        };
+
+        // Creates a array of Booleans that shows which part the user want to see
+        Boolean[] activateFeature = {
+                pref.getBoolean("wastedLifetimeCheckbox", true),
+                pref.getBoolean("deathCountdownCheckbox", true),
+                pref.getBoolean("famousAchievementsCheckbox",true),
+                pref.getBoolean("deathRateCheckbox", true)
+        };
 
 
-
-
-        if (!pref.getBoolean("wastedLifetimeCheckbox", true)) {
-            helloTextView.setVisibility(View.GONE);
-            wastedLifetimeTextView.setVisibility(View.GONE);
-            wastedLifetimeTextViewText.setVisibility(View.GONE);
-            progressBar.setVisibility(View.GONE);
-            trennlinie1.setVisibility(View.GONE);
-        } else {
-            helloTextView.setVisibility(View.VISIBLE);
-            wastedLifetimeTextView.setVisibility(View.VISIBLE);
-            wastedLifetimeTextViewText.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.VISIBLE);
-            trennlinie1.setVisibility(View.VISIBLE);
-        }
-
-
-        TextView coundownTextView = findViewById(R.id.countdownTv);
-        TextView countdownValueTextView = findViewById(R.id.countdownValueTv);
-        View trennlinie2 = findViewById(R.id.line2);
-
-        if (!pref.getBoolean("deathCountdownCheckbox", true)) {
-            coundownTextView.setVisibility(View.GONE);
-            countdownValueTextView.setVisibility(View.GONE);
-            trennlinie2.setVisibility(View.GONE);
-
-        } else {
-            coundownTextView.setVisibility(View.VISIBLE);
-            countdownValueTextView.setVisibility(View.VISIBLE);
-            trennlinie2.setVisibility(View.VISIBLE);
-        }
-
-
-        TextView whatArchievedTv = findViewById(R.id.whatArchievedTv);
-        TextView whatArchievedTvText = findViewById(R.id.whatArchievedTvText);
-        View trennlinie3 = findViewById(R.id.line3);
-
-        if (!pref.getBoolean("famousAchievementsCheckbox", true)) {
-            whatArchievedTv.setVisibility(View.GONE);
-            whatArchievedTvText.setVisibility(View.GONE);
-            trennlinie3.setVisibility(View.GONE);
-
-        } else {
-            whatArchievedTv.setVisibility(View.VISIBLE);
-            whatArchievedTvText.setVisibility(View.VISIBLE);
-            trennlinie3.setVisibility(View.VISIBLE);
-        }
-
-
-        TextView peopleDiedTextView = findViewById(R.id.peopleDiedTv);
-        TextView peopleDiedCounterTextView = findViewById(R.id.peopleDiedCounterTv);
-
-        TextView peopleDiedOfHungerTextView = findViewById(R.id.peopleDiedOfHungerTv);
-        TextView peopleDiedOfHungerCounterTextView = findViewById(R.id.peopleDiedOfHungerCounterTv);
-
-        TextView peopleDiedOfOverweightTextView = findViewById(R.id.peopleDiedOfOverweightTv);
-        TextView peopleDiedOfOverweightCounterTextView = findViewById(R.id.peopleDiedOfOverweightCounterTv);
-
-        TextView peopleDiedBySuicideTextView = findViewById(R.id.peopleDiedBySuicideTv);
-        TextView peopleDiedBySuicideCounterTextView = findViewById(R.id.peopleDiedBySuicideCounterTv);
-
-        TextView roadTrafficDeathsTextView = findViewById(R.id.roadTrafficDeathsTv);
-        TextView roadTrafficDeathsCounterTextView = findViewById(R.id.roadTrafficDeathsCounterTv);
-
-
-        if (!pref.getBoolean("deathRateCheckbox", true)) {
-            peopleDiedTextView.setVisibility(View.GONE);
-            peopleDiedCounterTextView.setVisibility(View.GONE);
-
-            peopleDiedOfHungerTextView.setVisibility(View.GONE);
-            peopleDiedOfHungerCounterTextView.setVisibility(View.GONE);
-
-            peopleDiedOfOverweightTextView.setVisibility(View.GONE);
-            peopleDiedOfOverweightCounterTextView.setVisibility(View.GONE);
-
-            peopleDiedBySuicideTextView.setVisibility(View.GONE);
-            peopleDiedBySuicideCounterTextView.setVisibility(View.GONE);
-
-            roadTrafficDeathsTextView.setVisibility(View.GONE);
-            roadTrafficDeathsCounterTextView.setVisibility(View.GONE);
-
-
-        } else {
-            peopleDiedTextView.setVisibility(View.VISIBLE);
-            peopleDiedCounterTextView.setVisibility(View.VISIBLE);
-
-            peopleDiedOfHungerTextView.setVisibility(View.VISIBLE);
-            peopleDiedOfHungerCounterTextView.setVisibility(View.VISIBLE);
-
-            peopleDiedOfOverweightTextView.setVisibility(View.VISIBLE);
-            peopleDiedOfOverweightCounterTextView.setVisibility(View.VISIBLE);
-
-            peopleDiedBySuicideTextView.setVisibility(View.VISIBLE);
-            peopleDiedBySuicideCounterTextView.setVisibility(View.VISIBLE);
-
-            roadTrafficDeathsTextView.setVisibility(View.VISIBLE);
-            roadTrafficDeathsCounterTextView.setVisibility(View.VISIBLE);
-        }
-
+        setVisibility(viewsArray, activateFeature);
 
 
         peopleDiedTotal = findViewById(R.id.peopleDiedCounterTv);
@@ -203,20 +113,17 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar lifetimeProgressBar = findViewById(R.id.wastedLifetimeProgressBar);
         lifetimeProgressBar.setProgress((int)(percentagelived()));
 
-
-        helloTextView = findViewById(R.id.helloTv);
+        TextView helloTextView = findViewById(R.id.helloTv);
         helloTextView.setText("Hello "+ Name+ ", you wasted");
 
 
+        // Calculates the remaining seconds
         if((1000000000 - (int)secsAlive()) > 0) {
             timeLeftInSeconds = 1000000000 - (int) secsAlive();
         } else {
             timeLeftInSeconds = 1;
             System.out.println("Works");
         }
-
-
-
         secondsLifeTime = findViewById(R.id.countdownValueTv);
 
 
@@ -229,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 timeLeftInSeconds = millisUntilFinished;
                 secondsLifeTime.setText(String.valueOf(millisUntilFinished/1000));
 
-               // PeopleDead.setText(String.valueOf(peopleDied()));
 
 
 
@@ -246,11 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       // loop();
-
-
-
-        countDownTimer2 = new CountDownTimer(1000000000, 1000) {
+        new CountDownTimer(1000000000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -265,8 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
-
 
             }
         }.start();
@@ -767,5 +667,18 @@ public class MainActivity extends AppCompatActivity {
         double h = cal.get(Calendar.HOUR_OF_DAY);
         double m = cal.get(Calendar.MINUTE);
         return  ((dayslived() * 24 + (h - birthHour)) * 3600 + (m - birthMinute) * 60) + s;
+    }
+
+    private void setVisibility(View[] viewsArray, Boolean[] activateFeature) {
+
+
+        // Sets the visibility of every view depending on the acitivateFeature Boolean
+        for ( int counter = 0; counter < viewsArray.length; counter ++ ) {
+            if(activateFeature[counter]) {
+                viewsArray[counter].setVisibility(View.VISIBLE);
+            } else {
+                viewsArray[counter].setVisibility(View.GONE);
+            }
+        }
     }
 }

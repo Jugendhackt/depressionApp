@@ -7,10 +7,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_margin="5dp"
         android:background="#000"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wastedLifetimeView"
+            android:orientation="vertical">
 
         <TextView
             android:id="@+id/helloTv"
@@ -63,6 +69,16 @@
             android:background="#fff"
             android:textColor="#ff0010" />
 
+        </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondsCountdownView"
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/countdownTv"
@@ -95,6 +111,15 @@
             android:background="#fff"
             android:textColor="#fff" />
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/otherAchievedView"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/whatArchievedTv"
             android:layout_width="match_parent"
@@ -125,7 +150,10 @@
             android:background="#fff"
             android:textColor="#fff" />
 
+    </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/dailydeathsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

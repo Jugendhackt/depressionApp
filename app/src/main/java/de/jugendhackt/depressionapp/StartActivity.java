@@ -86,16 +86,16 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
             public void onClick(View v) {
 
 
-                if (yearFinal == 0) {
+                if (yearFinal != 0 && monthFinal != 0 && dayFinal != 0) {
+                    year = yearFinal;
+                    month = monthFinal - 1;
+                    day = dayFinal;
+
+                } else {
                     Calendar c = Calendar.getInstance();
                     year = c.get(Calendar.YEAR);
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DAY_OF_MONTH);
-
-                } else {
-                    year = yearFinal;
-                    month = monthFinal - 1;
-                    day = dayFinal;
                 }
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(StartActivity.this, StartActivity.this, year, month, day);
@@ -116,13 +116,14 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
             @Override
             public void onClick(View v) {
 
-                if (hourFinal == 0) {
+                if (hourFinal != 0 && minuteFinal != 0) {
+                    hour = hourFinal;
+                    minute = minuteFinal;
+
+                } else {
                     Calendar c = Calendar.getInstance();
                     hour = c.get(Calendar.HOUR_OF_DAY);
                     minute = c.get(Calendar.MINUTE);
-                } else {
-                    hour = hourFinal;
-                    minute = minuteFinal;
                 }
 
 
@@ -143,11 +144,10 @@ public class StartActivity extends AppCompatActivity implements DatePickerDialog
 
             nameEditText.setText(pref.getString("Name", "Marina"));
 
-            int indexGender = Arrays.asList(items).indexOf(pref.getString("sex", "Male"));
+            int indexGender = Arrays.asList(items).indexOf(pref.getString("sex", "Gender"));
             genderSpinner.setSelection(indexGender, false);
 
-            int indexState = Arrays.asList(items1).indexOf(pref.getString("Ort", null));
-            System.out.println(pref.getString("Ort", null));
+            int indexState = Arrays.asList(items1).indexOf(pref.getString("Ort", "State"));
             stateSpinner.setSelection(indexState, false);
 
 
