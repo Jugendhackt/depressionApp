@@ -274,7 +274,7 @@
             android:layout_marginTop="20sp"
             android:background="@color/colorAccent"
             android:onClick="clickDoNothing"
-            android:text="I don´t do anything!"
+            android:text="I don't do anything!"
             android:textColor="#fff" />
 
     </LinearLayout>
