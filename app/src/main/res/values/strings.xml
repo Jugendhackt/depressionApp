@@ -1,5 +1,27 @@
 <resources>
+    <!-- Main Strings -->
     <string name="app_name">Depression App</string>
+
+    <!-- activity_main Strings -->
+    <string name="hello_person">Hello Person, you wasted</string>
+    <string name="of_lifetime">of your lifetime!</string>
+    <string name="billionth_second">Countdown to your billionth second:</string>
+    <string name="others_achieved">What others achieved at your age:</string>
+
+    <string name="total_deaths">Total number of people that have died today:</string>
+    <string name="deaths_hunger">People who died of hunger:</string>
+    <string name="deaths_overweight">People who died of overweight:</string>
+    <string name="deaths_suicide">People who died by suicide:</string>
+    <string name="deaths_traffic">Road traffic deaths:</string>
+
+    <string name="cant_do_anything">I don\'t do anything!</string>
+
+
+    <!-- activity_start Strings -->
+
+
+    <!-- choosing_activity Strings -->
+
 
 
 </resources>

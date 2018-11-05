@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     TextView secondsLifeTime;
     TextView peopleDiedTotal, peopleDiedOfHunger, peopleDiedOfOverweight, peopleDiedBySuicide, roadTrafficDeaths;
+
+    Map<String, Integer> stateDictionaryMale = new HashMap<String, Integer>();
+    Map<String, Integer> stateDictionaryFemale = new HashMap<String, Integer>();
+
+
 
 
     @Override
@@ -69,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Creates a array of Views from the MainActivity
-
         View[] viewsArray = {
                 findViewById(R.id.wastedLifetimeView),
                 findViewById(R.id.secondsCountdownView),
@@ -476,6 +482,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void setState() {
+
+        stateDictionaryMale.put("Baden-Württemberg", 80);
+        stateDictionaryFemale.put("Baden-Württemberg", 84);
+        stateDictionaryMale.put("Bayern", 79);
+        stateDictionaryFemale.put("Bayern", 83);
+        stateDictionaryMale.put("Berlin", 78);
+        stateDictionaryFemale.put("Berlin", 83);
+        stateDictionaryMale.put("Brandenburg", 77);
+        stateDictionaryFemale.put("Brandenburg", 83);
+        stateDictionaryMale.put("Bremen", 77);
+        stateDictionaryFemale.put("Bremen", 82);
+        stateDictionaryMale.put("Hamburg", 79);
+        stateDictionaryFemale.put("Hamburg", 83);
+        stateDictionaryMale.put("Hessen", 79);
+        stateDictionaryFemale.put("Hessen", 83);
+        stateDictionaryMale.put("Mecklenburg-Vorpommern", 77);
+        stateDictionaryFemale.put("Mecklenburg-Vorpommern", 83);
+        stateDictionaryMale.put("Niedersachsen", 78);
+        stateDictionaryFemale.put("Niedersachsen", 83);
+        stateDictionaryMale.put("Nordrhein-Westfahlen", 78);
+        stateDictionaryFemale.put("Nordrhein-Westfahlen", 83);
+        stateDictionaryMale.put("Rheinland-Pfalz", 79);
+        stateDictionaryFemale.put("Rheinland-Pfalz", 83);
+        stateDictionaryMale.put("Saarland", 78);
+        stateDictionaryFemale.put("Saarland", 82);
+        stateDictionaryMale.put("Sachsen", 78);
+        stateDictionaryFemale.put("Sachsen", 84);
+        stateDictionaryMale.put("Sachsen_Anhalt", 76);
+        stateDictionaryFemale.put("Sachsen_Anhalt", 83);
+        stateDictionaryMale.put("Schleswig-Holstein", 78);
+        stateDictionaryFemale.put("Schleswig-Holstein", 83);
+        stateDictionaryMale.put("Thüringen", 77);
+        stateDictionaryFemale.put("Thüringen", 83);
+        stateDictionaryMale.put("Saarland", 78);
+        stateDictionaryFemale.put("Saarland", 82);
+
+        stateDictionaryMale.put("default", 78);
+        stateDictionaryFemale.put("default", 83);
+
+    }
 
     private void choosePerson() {
         TextView personTextView = findViewById(R.id.whatArchievedTvText);
@@ -601,8 +648,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public double percentagelived(){
         return (dayslived()/365.25 /lifeexpectancy()) * 100;
     }
@@ -646,9 +691,6 @@ public class MainActivity extends AppCompatActivity {
         return (int)(((h + m/60 + s/3600) / 24) * 3425);
     }
 
-
-
-
     public int dayslived(){
 
 
@@ -659,7 +701,6 @@ public class MainActivity extends AppCompatActivity {
         return (int)((cal.get(Calendar.YEAR)-birthYear)*365.25+(cal.get(Calendar.MONTH) + 1 -birthMonth)*30.43687+(cal.get(Calendar.DAY_OF_MONTH)-birthDay));
     }
 
-
     public double secsAlive() {
         Calendar cal = Calendar.getInstance();
       
@@ -668,6 +709,8 @@ public class MainActivity extends AppCompatActivity {
         double m = cal.get(Calendar.MINUTE);
         return  ((dayslived() * 24 + (h - birthHour)) * 3600 + (m - birthMinute) * 60) + s;
     }
+
+
 
     private void setVisibility(View[] viewsArray, Boolean[] activateFeature) {
 

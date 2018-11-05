@@ -18,16 +18,16 @@
             android:id="@+id/wastedLifetimeView"
             android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/helloTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:text="Hello Person, you wasted"
-            android:textAlignment="center"
-            android:textColor="#ff0010"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/helloTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/hello_person"
+                android:textAlignment="center"
+                android:textColor="#ff0010"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
         <TextView
             android:id="@+id/wastedLifetimePercent"
@@ -38,15 +38,15 @@
             android:textColor="#fff"
             android:textSize="60sp" />
 
-        <TextView
-            android:id="@+id/wastedLifetimeTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="of your lifetime!"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/wastedLifetimeTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/of_lifetime"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/wastedLifetimeProgressBar"
@@ -84,7 +84,7 @@
             android:id="@+id/countdownTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Countdown to your billionth second:"
+            android:text="@string/billionth_second"
             android:textAlignment="center"
             android:textColor="#ff0010"
             android:textSize="30sp"
@@ -124,7 +124,7 @@
             android:id="@+id/whatArchievedTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What others achieved at your age:"
+            android:text="@string/others_achieved"
             android:textAlignment="center"
             android:textColor="#ff0010"
             android:textSize="25sp"
@@ -162,7 +162,7 @@
                 android:id="@+id/peopleDiedTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Total number of people that have died today:"
+                android:text="@string/total_deaths"
                 android:textAlignment="center"
                 android:textColor="#ff0010"
                 android:textSize="30dp"
@@ -178,16 +178,15 @@
                 android:textSize="30sp" />
 
 
-
             <TextView
                 android:id="@+id/peopleDiedOfHungerTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="People who died of hunger:"
+                android:layout_marginTop="20sp"
+                android:text="@string/deaths_hunger"
                 android:textAlignment="center"
                 android:textColor="#bbff0010"
                 android:textSize="25sp"
-                android:layout_marginTop="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -205,7 +204,7 @@
                 android:id="@+id/peopleDiedOfOverweightTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="People who died of overweight:"
+                android:text="@string/deaths_overweight"
                 android:textAlignment="center"
                 android:textColor="#bbff0010"
                 android:textSize="25sp"
@@ -227,7 +226,7 @@
                 android:id="@+id/peopleDiedBySuicideTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="People who died by suicide:"
+                android:text="@string/deaths_suicide"
                 android:textAlignment="center"
                 android:textColor="#bbff0010"
                 android:textSize="25sp"
@@ -248,7 +247,7 @@
                 android:id="@+id/roadTrafficDeathsTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Road traffic deaths:"
+                android:text="@string/deaths_traffic"
                 android:textAlignment="center"
                 android:textColor="#bbff0010"
                 android:textSize="25sp"
@@ -274,7 +273,7 @@
             android:layout_marginTop="20sp"
             android:background="@color/colorAccent"
             android:onClick="clickDoNothing"
-            android:text="I don't do anything!"
+            android:text="@string/cant_do_anything"
             android:textColor="#fff" />
 
     </LinearLayout>
